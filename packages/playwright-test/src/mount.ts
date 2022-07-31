@@ -21,7 +21,7 @@ let boundCallbacksForMount: Function[] = [];
 
 interface MountResult extends Locator {
   unmount: (locator: Locator) => Promise<void>;
-  setProps: (props: { [key: string]: any }) => Promise<void>;
+  updateProps: (props: { [key: string]: any }) => Promise<void>;
 }
 
 export const fixtures: Fixtures<
@@ -60,9 +60,9 @@ export const fixtures: Fixtures<
               await window.playwrightUnmount(element, rootElement);
             });
           },
-          setProps: async (props: { [key: string]: any }) => {
+          updateProps: async (props: { [key: string]: any }) => {
             await locator.evaluate(async (element, props) => {
-              return await window.playwrightSetProps(element, props);
+              return await window.playwrightUpdateProps(element, props);
             }, props);
           }
         });
