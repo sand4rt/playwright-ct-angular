@@ -18,6 +18,8 @@
 
 // This file is injected into the registry as text, no dependencies are allowed.
 
+import { detach, insert, noop } from 'svelte/internal';
+
 /** @typedef {import('../playwright-test/types/component').Component} Component */
 /** @typedef {any} FrameworkComponent */
 /** @typedef {import('svelte').SvelteComponent} SvelteComponent */
@@ -31,6 +33,34 @@ const registry = new Map();
 export function register(components) {
   for (const [name, value] of Object.entries(components))
     registry.set(name, value);
+}
+
+
+/**
+ * TODO: Remove this temporary workaround until the follow issue is resolved:
+ * https://github.com/sveltejs/svelte/issues/2588
+ */
+function createSlots(slots) {
+  const svelteSlots = {};
+
+  for (const slotName in slots)
+    svelteSlots[slotName] = [createSlotFn(slots[slotName])];
+
+  function createSlotFn(element) {
+    return function() {
+      return {
+        c: noop,
+        m: function mount(target, anchor) {
+          insert(target, element, anchor);
+        },
+        d: function destroy(detaching) {
+          if (detaching) detach(element);
+        },
+        l: noop,
+      };
+    };
+  }
+  return svelteSlots;
 }
 
 window.playwrightMount = async (component, rootElement, hooksConfig) => {
@@ -51,13 +81,16 @@ window.playwrightMount = async (component, rootElement, hooksConfig) => {
   if (component.kind !== 'object')
     throw new Error('JSX mount notation is not supported');
 
-
   for (const hook of /** @type {any} */(window).__pw_hooks_before_mount || [])
     await hook({ hooksConfig });
 
   const svelteComponent = /** @type {SvelteComponent} */ (new componentCtor({
     target: rootElement,
-    props: component.options?.props,
+    props: {
+      ...component.options?.props,
+      $$slots: createSlots(component.options?.slots),
+      $$scope: {}
+    }
   }));
   rootElement[svelteComponentKey] = svelteComponent;
 

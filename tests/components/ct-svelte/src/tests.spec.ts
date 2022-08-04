@@ -15,7 +15,8 @@
  */
 
 import { test, expect } from '@playwright/experimental-ct-svelte';
-import App from './App.svelte';
+import App from './components/App.svelte';
+import NamedSlots from './components/NamedSlots.svelte';
 
 test.use({ viewport: { width: 500, height: 500 } });
 
@@ -26,4 +27,17 @@ test('should work', async ({ mount }) => {
     }
   });
   await expect(component).toContainText('Hello world!');
+})
+
+test('named slots should work', async ({ mount }) => {
+  const component = await mount(NamedSlots, {
+    slots: {
+      header: 'Header',
+      main: 'Main Content',
+      footer: 'Footer'
+    }
+  })
+  await expect(component).toContainText('Header')
+  await expect(component).toContainText('Main Content')
+  await expect(component).toContainText('Footer')
 })
