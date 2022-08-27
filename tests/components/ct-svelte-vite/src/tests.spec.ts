@@ -16,6 +16,8 @@
 
 import { test, expect } from '@playwright/experimental-ct-svelte';
 import Button from './components/Button.svelte';
+import DefaultSlot from './components/DefaultSlot.svelte';
+import NamedSlots from './components/NamedSlots.svelte';
 import MultiRoot from './components/MultiRoot.svelte';
 
 test.use({ viewport: { width: 500, height: 500 } });
@@ -41,6 +43,29 @@ test('event should work', async ({ mount }) => {
   })
   await component.click()
   expect(messages).toEqual(['hello'])
+})
+
+test('multiple slots should work', async ({ mount }) => {
+  const component = await mount(DefaultSlot, {
+    slots: {
+      default: ['one', 'two']
+    }
+  })
+  await expect(component).toContainText('one')
+  await expect(component).toContainText('two')
+})
+
+test('named slots should work', async ({ mount }) => {
+  const component = await mount(NamedSlots, {
+    slots: {
+      header: 'Header',
+      main: 'Main Content',
+      footer: 'Footer'
+    }
+  })
+  await expect(component).toContainText('Header')
+  await expect(component).toContainText('Main Content')
+  await expect(component).toContainText('Footer')
 })
 
 test('should run hooks', async ({ page, mount }) => {
