@@ -18,7 +18,7 @@ import { test, expect } from './playwright-test-fixtures';
 
 test('should work with TSX', async ({ runInlineTest }) => {
   const result = await runInlineTest({
-    'playwright/index.html': `<script type="module" src="/playwright/index.ts"></script>`,
+    'playwright/index.html': `<script type="module" src="/index.ts"></script>`,
     'playwright/index.ts': `
       //@no-header
     `,
@@ -140,7 +140,7 @@ test('should work with JSX in JS and in JSX', async ({ runInlineTest }) => {
 
 test('should work with stray TSX import', async ({ runInlineTest }) => {
   const result = await runInlineTest({
-    'playwright/index.html': `<script type="module" src="/playwright/index.ts"></script>`,
+    'playwright/index.html': `<script type="module" src="/index.ts"></script>`,
     'playwright/index.ts': `
       //@no-header
     `,
@@ -323,7 +323,7 @@ test('should respect default property values', async ({ runInlineTest }) => {
 
 test('should bundle public folder', async ({ runInlineTest }) => {
   const result = await runInlineTest({
-    'playwright/index.html': `<script type="module" src="/playwright/index.ts"></script>`,
+    'playwright/index.html': `<script type="module" src="/index.ts"></script>`,
     'playwright/index.ts': `
       //@no-header
     `,

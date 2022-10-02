@@ -21,7 +21,7 @@ test.describe.configure({ mode: 'parallel' });
 
 test('should work with the empty component list', async ({ runInlineTest }, testInfo) => {
   const result = await runInlineTest({
-    'playwright/index.html': `<script type="module" src="/playwright/index.js"></script>`,
+    'playwright/index.html': `<script type="module" src="/index.js"></script>`,
     'playwright/index.js': ``,
 
     'a.test.ts': `
@@ -45,7 +45,7 @@ test('should work with the empty component list', async ({ runInlineTest }, test
 
 test('should extract component list', async ({ runInlineTest }, testInfo) => {
   const result = await runInlineTest({
-    'playwright/index.html': `<script type="module" src="/playwright/index.ts"></script>`,
+    'playwright/index.html': `<script type="module" src="/index.ts"></script>`,
     'playwright/index.ts': ``,
 
     'src/button.tsx': `
@@ -206,7 +206,7 @@ test('should cache build', async ({ runInlineTest }, testInfo) => {
 
   await test.step('original test', async () => {
     const result = await runInlineTest({
-      'playwright/index.html': `<script type="module" src="/playwright/index.ts"></script>`,
+      'playwright/index.html': `<script type="module" src="/index.ts"></script>`,
       'playwright/index.ts': ``,
 
       'src/button.tsx': `

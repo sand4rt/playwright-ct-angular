@@ -92,7 +92,7 @@ export function createPlugin(
       // 3. Check component sources.
       const sourcesDirty = !buildExists || hasNewComponents || await checkSources(buildInfo);
 
-      viteConfig.root = rootDir;
+      viteConfig.root = templateDir;
       viteConfig.preview = { port };
       viteConfig.build = {
         outDir
@@ -135,6 +135,9 @@ export function createPlugin(
           input: {
             index: path.join(templateDir, 'index.html')
           },
+          output: {
+            dir: viteConfig.build.outDir,
+          }
         },
         sourcemap: true,
       };
@@ -150,7 +153,7 @@ export function createPlugin(
       const isAddressInfo = (x: any): x is AddressInfo => x?.address;
       const address = previewServer.httpServer.address();
       if (isAddressInfo(address))
-        process.env.PLAYWRIGHT_VITE_COMPONENTS_BASE_URL = `http://localhost:${address.port}/${relativeTemplateDir}/index.html`;
+        process.env.PLAYWRIGHT_VITE_COMPONENTS_BASE_URL = `http://localhost:${address.port}`;
     },
 
     teardown: async () => {
