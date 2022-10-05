@@ -48,22 +48,27 @@ export const fixtures: Fixtures<
     },
 
     mount: async ({ page }, use) => {
-      await use(async (component: JsxComponent | string, options?: MountOptions) => {
-        const selector = await (page as any)._wrapApiCall(async () => {
-          return await innerMount(page, component, options);
-        }, true);
-        const locator = page.locator(selector);
-        return Object.assign(locator, {
-          unmount: async () => {
-            await locator.evaluate(async () => {
-              const rootElement = document.getElementById('root')!;
-              await window.playwrightUnmount(rootElement);
-            });
-          },
-          rerender: async (component: JsxComponent | string, options?: Omit<MountOptions, 'hooksConfig'>) => {
-            await innerRerender(page, component, options);
-          }
-        });
+      await use((component: JsxComponent | string, options?: MountOptions) => {
+        async function mount() {
+          const selector = await(page as any)._wrapApiCall(async () => {
+            return await innerMount(page, component, options);
+          }, true);
+          const locator = page.locator(selector);
+          return Object.assign(locator, {
+            unmount: async () => {
+              await locator.evaluate(async () => {
+                const rootElement = document.getElementById('root')!;
+                await window.playwrightUnmount(rootElement);
+              });
+            },
+            rerender: async (component: JsxComponent | string, options?: Omit<MountOptions, 'hooksConfig'>) => {
+              await innerRerender(page, component, options);
+            }
+          });
+        }
+        page.addListener('load', mount);
+        return mount();
+
       });
       boundCallbacksForMount = [];
     },

@@ -93,6 +93,7 @@ export function createPlugin(
       const sourcesDirty = !buildExists || hasNewComponents || await checkSources(buildInfo);
 
       viteConfig.root = templateDir;
+      viteConfig.publicDir = `${rootDir}/${viteConfig.publicDir}`;
       viteConfig.preview = { port };
       viteConfig.build = {
         outDir

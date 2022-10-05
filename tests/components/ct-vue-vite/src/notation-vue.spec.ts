@@ -132,8 +132,17 @@ test('get textContent of the empty template', async ({ mount }) => {
 test('render app and navigate to a page', async ({ page, mount }) => {
   const component = await mount(App);
   await expect(component.getByRole('main')).toHaveText('Login');
-  expect(page).toHaveURL('/');
+  await expect(page).toHaveURL('/');
   await component.getByRole('link', { name: 'Dashboard' }).click();
   await expect(component.getByRole('main')).toHaveText('Dashboard');
-  expect(page).toHaveURL('/dashboard');
+  await expect(page).toHaveURL('/dashboard');
+});
+
+test('render app and navigate to a page with page.goto', async ({ page, mount }) => {
+  const component = await mount(App);
+  await expect(component.getByRole('main')).toHaveText('Login');
+  await expect(page).toHaveURL('/');
+  await page.goto('/dashboard');
+  await expect(page).toHaveURL('/dashboard');
+  await expect(component.getByRole('main')).toHaveText('Dashboard');
 });
