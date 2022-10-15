@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/experimental-ct-vue2'
+import App from './App.vue'
 import Button from './components/Button.vue'
 import Counter from './components/Counter.vue'
 import DefaultSlot from './components/DefaultSlot.vue'
@@ -147,4 +148,20 @@ test('get textContent of the empty template', async ({ mount }) => {
   expect(await component.allTextContents()).toEqual(['']);
   expect(await component.textContent()).toBe('');
   await expect(component).toHaveText('');
+});
+
+test('navigate to a page by clicking a link', async ({ mount }) => {
+  const component = await mount(App);
+  await expect(component.getByRole('main')).toHaveText('Login');
+  await component.getByRole('link', { name: 'Dashboard' }).click();
+  await expect(component.getByRole('main')).toHaveText('Dashboard');
+});
+
+test('navigate to a page with page.goto', async ({ page, mount }) => {
+  const component = await mount(App);
+  await expect(component.getByRole('main')).toHaveText('Login');
+  await expect(page).toHaveURL('/');
+  await page.goto('/dashboard');
+  await expect(component.getByRole('main')).toHaveText('Dashboard');
+  await expect(page).toHaveURL('/dashboard');
 });

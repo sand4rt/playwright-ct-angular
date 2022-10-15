@@ -23,6 +23,7 @@ const config: PlaywrightTestConfig = {
   reporter: 'html',
   use: {
     trace: 'on-first-retry',
+    baseURL: 'http://localhost:3100',
   },
   projects: [
     {

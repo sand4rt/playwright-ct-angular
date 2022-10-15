@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-import { CombinedVueInstance, Vue } from 'vue/types/vue';
-
+import { ComponentOptions } from 'vue';
+import { CombinedVueInstance, Vue, VueConstructor } from 'vue/types/vue';
+type VueOptions = ComponentOptions<Vue> & Record<string, unknown> & { router?: unknown, store?: unknown } & Record<string, any>;
 type JsonPrimitive = string | number | boolean | null;
 type JsonValue = JsonPrimitive | JsonObject | JsonArray;
 type JsonArray = JsonValue[];
 type JsonObject = { [Key in string]?: JsonValue };
-export declare function beforeMount(callback: (params: { hooksConfig: JsonObject }) => Promise<void>): void;
+export declare function beforeMount(callback: (params: { hooksConfig: JsonObject, app: VueConstructor<Vue>, options: VueOptions }) => Promise<void>): void;
 export declare function afterMount(callback: (params: { hooksConfig: JsonObject, instance: CombinedVueInstance<Vue, object, object, object, Record<never, any>> }) => Promise<void>): void;
