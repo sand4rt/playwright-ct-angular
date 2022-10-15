@@ -27,6 +27,7 @@ import type { FullConfig } from '../types';
 import { assert, calculateSha1 } from 'playwright-core/lib/utils';
 import type { AddressInfo } from 'net';
 import { getPlaywrightVersion } from 'playwright-core/lib/common/userAgent';
+import type { PlaywrightTestConfig as BasePlaywrightTestConfig } from '@playwright/test';
 
 let stoppableServer: any;
 const playwrightVersion = getPlaywrightVersion();
@@ -36,7 +37,7 @@ type CtConfig = {
   ctTemplateDir?: string;
   ctCacheDir?: string;
   ctViteConfig?: InlineConfig;
-};
+} & BasePlaywrightTestConfig['use'];
 
 const importReactRE = /(^|\n)import\s+(\*\s+as\s+)?React(,|\s+)/;
 const compiledReactRE = /(const|var)\s+React\s*=/;
