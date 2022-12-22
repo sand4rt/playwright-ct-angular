@@ -1,15 +1,15 @@
 import { test, expect } from '@playwright/experimental-ct-vue';
-import Button from './components/Button.vue';
+import Button from '@/components/Button.vue';
 
 test('emit an submit event when the button is clicked', async ({ mount }) => {
   const messages = [];
   const component = await mount(Button, {
     props: {
-      title: 'Submit'
+      title: 'Submit',
     },
     on: {
-      submit: (data) => messages.push(data)
-    }
+      submit: (data) => messages.push(data),
+    },
   });
   await component.click();
   expect(messages).toEqual(['hello']);

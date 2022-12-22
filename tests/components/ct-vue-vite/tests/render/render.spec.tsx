@@ -1,13 +1,14 @@
 import { test, expect } from '@playwright/experimental-ct-vue';
-import Button from '../../components/Button.vue';
+import Button from '@/components/Button.vue';
+import EmptyTemplate from '@/components/EmptyTemplate.vue';
 
 test('render props', async ({ mount }) => {
-  const component = await mount(<Button title="Submit" />);
+  const component = await mount(<Button title='Submit' />);
   await expect(component).toContainText('Submit');
 });
 
 test('render attributes', async ({ mount }) => {
-  const component = await mount(<Button class="primary" title="Submit" />);
+  const component = await mount(<Button class='primary' title='Submit' />);
   await expect(component).toHaveClass('primary');
 });
 

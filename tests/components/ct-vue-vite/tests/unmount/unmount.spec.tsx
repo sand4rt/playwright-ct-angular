@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/experimental-ct-vue';
-import MultiRoot from './components/MultiRoot.vue';
+import MultiRoot from '@/components/MultiRoot.vue';
 
 test('unmount a multi root component', async ({ mount, page }) => {
   const component = await mount(<MultiRoot />);
