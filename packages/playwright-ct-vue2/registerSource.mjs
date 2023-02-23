@@ -18,7 +18,9 @@
 
 // This file is injected into the registry as text, no dependencies are allowed.
 
-import Vue from 'vue';
+import * as VueRuntime from '@vue/runtime-core';
+import { compile } from '@vue/compiler-dom';
+import Vue, { h } from 'vue';
 
 /** @typedef {import('../playwright-test/types/component').Component} Component */
 /** @typedef {import('vue').Component} FrameworkComponent */
@@ -36,10 +38,42 @@ export function register(components) {
 
 /**
  * @param {Component | string} child
- * @param {import('vue').CreateElement} h
  */
-function createChild(child, h) {
-  return typeof child === 'string' ? child : createWrapper(child, h);
+function createChild(child) {
+  return typeof child === 'string' ? child : createWrapper(child);
+}
+
+/**
+ * Copied from: https://github.com/vuejs/test-utils/blob/main/src/utils/compileSlots.ts
+ * Vue does not provide an easy way to compile template in "slot" mode
+ * Since we do not want to rely on compiler internals and specify
+ * transforms manually we create fake component invocation with the slot we
+ * need and pick slots param from render function later. Fake component will
+ * never be instantiated but it requires to be a component so compile
+ * properly generate invocation. Since we do not want to monkey-patch
+ * `resolveComponent` function we are just using one of built-in components.
+ *
+ * @param {string} html
+ */
+function createSlot(html) {
+  let template = html.trim();
+  const hasWrappingTemplate = template && template.startsWith('<template');
+
+  // allow content without `template` tag, for easier testing
+  if (!hasWrappingTemplate)
+    template = `<template #default="params">${template}</template>`;
+
+  const { code } = compile(`<transition>${template}</transition>`, {
+    mode: 'function',
+    prefixIdentifiers: false
+  });
+  const createRenderFunction = new Function('Vue', code);
+  const renderFn = createRenderFunction(VueRuntime);
+  return (ctx = {}) => {
+    const result = renderFn(ctx);
+    const slotName = Object.keys(result.children)[0];
+    return result.children[slotName](ctx);
+  };
 }
 
 /**
@@ -58,9 +92,8 @@ function componentHasKeyInProps(Component, key) {
 
 /**
  * @param {Component} component
- * @param {import('vue').CreateElement} h
  */
-function createComponent(component, h) {
+function createComponent(component) {
   /**
    * @type {import('vue').Component | string | undefined}
    */
@@ -99,9 +132,9 @@ function createComponent(component, h) {
       if (typeof child !== 'string' && child.type === 'template' && child.kind === 'jsx') {
         const slotProperty = Object.keys(child.props).find(k => k.startsWith('v-slot:'));
         const slot = slotProperty ? slotProperty.substring('v-slot:'.length) : 'default';
-        nodeData.scopedSlots[slot] = () => child.children.map(c => createChild(c, h));
+        nodeData.scopedSlots[slot] = () => child.children.map(c => createChild(c));
       } else {
-        children.push(createChild(child, h));
+        children.push(createChild(child));
       }
     }
 
@@ -122,7 +155,7 @@ function createComponent(component, h) {
     // Vue test util syntax.
     const options = component.options || {};
     for (const [key, value] of Object.entries(options.slots || {})) {
-      const list = (Array.isArray(value) ? value : [value]).map(v => createChild(v, h));
+      const list = (Array.isArray(value) ? value : [value]).map(v => createChild(v));
       if (key === 'default')
         children.push(...list);
       else
@@ -147,12 +180,14 @@ function createComponent(component, h) {
 
 /**
  * @param {Component} component
- * @param {import('vue').CreateElement} h
  * @returns {import('vue').VNode}
  */
-function createWrapper(component, h) {
-  const { Component, nodeData, slots } = createComponent(component, h);
-  const wrapper = h(Component, nodeData, slots);
+function createWrapper(component) {
+  const { Component, nodeData, slots } = createComponent(component);
+  const x = slots?.map(slot => createSlot(slot)());
+  console.log(x);
+
+  const wrapper = h(Component, nodeData, x);
   return wrapper;
 }
 
@@ -167,7 +202,7 @@ window.playwrightMount = async (component, rootElement, hooksConfig) => {
   const instance = new Vue({
     ...options,
     render: h => {
-      const wrapper = createWrapper(component, h);
+      const wrapper = createWrapper(component);
       /** @type {any} */ (rootElement)[wrapperKey] = wrapper;
       return wrapper;
     },
@@ -193,7 +228,7 @@ window.playwrightUpdate = async (element, options) => {
     throw new Error('Component was not mounted');
 
   const component = wrapper.componentInstance;
-  const { nodeData, slots } = createComponent(options, component.$createElement);
+  const { nodeData, slots } = createComponent(options);
 
   for (const [name, value] of Object.entries(nodeData.on || {})) {
     component.$on(name, value);

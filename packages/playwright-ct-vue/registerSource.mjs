@@ -18,7 +18,7 @@
 // This file is injected into the registry as text, no dependencies are allowed.
 
 import { createApp, setDevtoolsHook, h } from 'vue';
-import { compile } from '@vue/compiler-dom';
+import { compile,  } from '@vue/compiler-dom';
 import * as Vue from 'vue';
 
 /** @typedef {import('@playwright/test/types/component').Component} Component */
