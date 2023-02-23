@@ -28,6 +28,25 @@ test('render a component with multiple children', async ({ mount }) => {
   await expect(component.locator('#two')).toContainText('Two');
 });
 
+test('default', async ({ mount }) => {
+  const component = await mount(Component);
+  // hydrates automatically because mode is 'default' by default.  
+});
+
+test('ssr', async ({ mount }) => {
+  const component = await mount(Component, { mode: 'ssr' });
+  // .. verify that SSR was right 
+  await component.hydrate();
+  // .. verify the component after hydration works
+});
+
+['ssr', 'default'].forEach(mode => {
+  test(mode, async ({ mount }) => {
+    const component = await mount(Component, { mode });
+    // .. verify that SSR and default was right 
+  });
+})
+
 test('render a component with a named slot', async ({ mount }) => {
   const component = await mount(
     <NamedSlots>
