@@ -1,0 +1,3 @@
+packages:
+  - 'ct-angular/**'
+  - 'playwright-ct-angular/**'
