@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sand4rt/playwright-ct-web.git"
+    "url": "git+https://github.com/sand4rt/playwright-ct-angular.git"
   },
   "bugs": {
-    "url": "https://github.com/sand4rt/playwright-ct-web/issues"
+    "url": "https://github.com/sand4rt/playwright-ct-angular/issues"
   },
-  "homepage": "https://github.com/sand4rt/playwright-ct-web#readme",
+  "homepage": "https://github.com/sand4rt/playwright-ct-angular#readme",
   "engines": {
     "node": ">=16",
     "pnpm": ">=7"
