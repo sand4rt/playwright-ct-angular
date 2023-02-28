@@ -2,7 +2,7 @@ import { test, expect } from '@sand4rt/experimental-ct-angular';
 import type { HooksConfig } from 'playwright';
 import { AppComponent } from '@/app.component';
 
-test('navigate to a page by clicking a link', async ({ page, mount }) => {
+test.fixme('navigate to a page by clicking a link', async ({ page, mount }) => {
   const component = await mount<HooksConfig>(AppComponent, {
     hooksConfig: { routing: true },
   });

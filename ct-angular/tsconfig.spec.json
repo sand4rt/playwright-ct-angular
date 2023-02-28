@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "composite": false,
-    "outDir": "./out-tsc/spec",
-    "types": ["node"]
-  },
-  "include": ["tests/**/*.spec.ts", "playwright"]
-}

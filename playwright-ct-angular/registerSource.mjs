@@ -20,9 +20,7 @@
 import 'zone.js';
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventEmitter, reflectComponentType, Component as defineComponent } from '@angular/core';
-import { Router } from '@angular/router';
 
 /** @typedef {import('@playwright/test/types/component').Component} Component */
 /** @typedef {import('@angular/core').Type} FrameworkComponent */
@@ -145,16 +143,13 @@ async function renderComponent(component) {
   })(class {});
 
   TestBed.configureTestingModule({
-    imports: [Component, BrowserAnimationsModule],
+    imports: [Component],
     declarations: [WrapperComponent]
   });
 
   await TestBed.compileComponents();
 
   updateSlots(WrapperComponent, component.options?.slots, componentMetadata.selector);
-
-  // TODO: only inject when router is provided
-  TestBed.inject(Router).initialNavigation();
 
   const fixture = TestBed.createComponent(WrapperComponent);
   fixture.nativeElement.id = 'root';
