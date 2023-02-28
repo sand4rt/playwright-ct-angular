@@ -1,7 +1,7 @@
 # Playwright angular component testing
 
 > **Note**
-> Playwright component testing is marked as experimental by the playwright team. 
+> This library is work in progress and Playwright component testing is marked as experimental by the playwright team. 
 
 ## Usage
 
