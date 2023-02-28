@@ -5,7 +5,7 @@
 
 ## Usage
 
-First, install playwright and initialize component testing, then install the web component adapter.
+First, install playwright and initialize component testing, then install the Angular adapter.
 
 ```sh
 npm init playwright@latest -- --ct
@@ -53,5 +53,5 @@ test('render props', async ({ mount }) => {
 });
 ```
 
-See the official [playwright component testing documentation](https://playwright.dev/docs/test-components) and the tests for [angular](ct-angular/tests) for more information on how to use it.
+See the official [playwright component testing documentation](https://playwright.dev/docs/test-components) and the [tests](ct-angular/tests) for more information on how to use it.
 
