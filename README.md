@@ -1,7 +1,7 @@
 # Playwright Angular component testing
 
 > **Note**
-> The API has been designed to closely resemble Playwright's API, wherever it is appropriate to do so. This is **aimed** at facilitating a smooth transition to Playwright once it offers official support for Angular. It is important to take into account that this library will reach end of life when Playwright has official support for Angular.
+> The API has been designed to closely resemble Playwright's API, wherever it is appropriate to do so. This library is **aimed** at facilitating a smooth transition to Playwright once it offers official support for Angular. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.
 
 ## Usage
 
@@ -30,8 +30,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   standalone: true,
-  template: `<button>{{title}}</button>`,
   selector: 'button-component'
+  template: `<button>{{title}}</button>`,
 })
 export class ButtonComponent {
   @Input() title!: string;
