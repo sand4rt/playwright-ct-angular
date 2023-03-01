@@ -18,12 +18,14 @@ const { test: baseTest, expect, devices, defineConfig: originalDefineConfig } = 
 const { fixtures } = require('@playwright/test/lib/mount');
 const path = require('path');
 
+process.env['NODE_ENV'] = 'test';
+
 function plugin() {
   // Only fetch upon request to avoid resolution in workers.
   const { createPlugin } = require('@playwright/test/lib/plugins/vitePlugin');
   return createPlugin(
     path.join(__dirname, 'registerSource.mjs'),
-    () => {}
+    () => import('@analogjs/vite-plugin-angular').then(plugin => plugin.default())
   )
 };
 
