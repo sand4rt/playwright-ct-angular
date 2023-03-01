@@ -1,7 +1,9 @@
 # Playwright Angular component testing
 
 > **Note**
-> The API has been designed to closely resemble Playwright's API, wherever it is appropriate to do so. This library is **aimed** at facilitating a smooth transition to Playwright once it offers official support for Angular. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.
+> The API has been designed to closely resemble Playwright's API wherever applicable. This library is _(without guarantee)_ aimed at facilitating a smooth transition to Playwright once it offers official support for Angular components. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.
+> 
+> To push for official support, feedback in the form of github issues and or stars are appreciated!
 
 ## Usage
 
