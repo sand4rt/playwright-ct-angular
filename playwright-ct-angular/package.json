@@ -1,6 +1,6 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
@@ -14,6 +14,17 @@
     "node": ">=14"
   },
   "license": "MIT",
+  "keywords": [
+    "testing",
+    "angular components",
+    "real browser",
+    "playwright",
+    "unit",
+    "integration",
+    "functional",
+    "end to end",
+    "e2e"
+  ],
   "exports": {
     ".": {
       "types": "./index.d.ts",
