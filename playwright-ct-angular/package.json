@@ -54,7 +54,11 @@
     "vite": "^4.1.4"
   },
   "peerDependencies": {
-    "@playwright/test": ">=1.31.0"
+    "@playwright/test": ">=1.31.0",
+    "@angular/common": ">=14",
+    "@angular/core": ">=14",
+    "@angular/platform-browser-dynamic": ">=14",
+    "zone.js": ">=0.11.0"
   },
   "bin": {
     "playwright": "./cli.js"
