@@ -64,7 +64,7 @@ function updateEvents(fixture, events = {}) {
 }
 
 function updateSlots(Component, slots = {}, tag) {
-  const wrapper = document.createElement('div');
+  const wrapper = document.createElement(tag);
   for (const [key, value] of Object.entries(slots)) {
     let slotElements;
     if (typeof value !== 'object')
@@ -96,7 +96,7 @@ function updateSlots(Component, slots = {}, tag) {
     }
   }
 
-  TestBed.overrideTemplate(Component, `<${tag}>${wrapper.innerHTML}</${tag}>`);
+  TestBed.overrideTemplate(Component, wrapper.outerHTML);
 }
 
 /**
