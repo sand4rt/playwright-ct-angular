@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Playwright Component Testing for Angular",
   "repository": "github:Microsoft/playwright",
-  "homepage": "https://playwright.dev",
+  "homepage": "https://github.com/sand4rt/playwright-ct-angular",
   "engines": {
     "node": ">=14"
   },
