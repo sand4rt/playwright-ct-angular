@@ -1,7 +1,7 @@
 # Playwright angular component testing
 
 > **Note**
-> This library is work in progress and Playwright component testing is marked as experimental by the playwright team. 
+> The API is as close as possible to Playwright's API, as long as it makes sense. This should, in theory, make it easier to migrate to Playwright once they have official support for Angular. In addition, it is important to take into account that this library will reach end of life when playwright has official support for Angular.
 
 ## Usage
 
