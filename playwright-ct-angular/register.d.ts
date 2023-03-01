@@ -14,6 +14,4 @@
  * limitations under the License.
  */
 
-export default function register(
-  components: { [key: string]: any },
-): void
+export default function register(components: Record<string, any>): void
