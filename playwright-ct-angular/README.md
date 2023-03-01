@@ -17,7 +17,7 @@ npm install -D @sand4rt/experimental-ct-angular
 After installing the config needs to be modified:
 
 ```ts
-import { defineConfig } from "@sand4rt/experimental-ct-angular";
+import { defineConfig } from '@sand4rt/experimental-ct-angular';
 
 export default defineConfig({
   // ...Your config
@@ -56,4 +56,3 @@ test('render props', async ({ mount }) => {
 ```
 
 See the official [playwright component testing documentation](https://playwright.dev/docs/test-components) and the [tests](ct-angular/tests) for more information on how to use it.
-
