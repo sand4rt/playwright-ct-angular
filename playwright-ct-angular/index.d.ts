@@ -51,7 +51,7 @@ export interface MountOptions<HooksConfig extends JsonObject, Component> {
 
 interface MountResult<Component> extends Locator {
   unmount(): Promise<void>;
-  update(options: Omit<MountOptions<never, Component>, 'hooksConfig'>): Promise<void>;
+  update(options: Omit<Omit<MountOptions<never, Component>, 'hooksConfig'>, 'slots'>): Promise<void>;
 }
 
 export interface ComponentFixtures {
