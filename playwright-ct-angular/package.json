@@ -1,6 +1,6 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
@@ -55,11 +55,7 @@
     "vite": "^4.1.4"
   },
   "devDependencies": {
-    "@playwright/test": "1.31.0",
-    "@angular/common": ">=14",
-    "@angular/core": ">=14",
-    "@angular/platform-browser-dynamic": ">=14",
-    "zone.js": ">=0.11.0"
+    "@playwright/test": "1.31.0"
   },
   "peerDependencies": {
     "@playwright/test": ">=1.31.0"
