@@ -1,14 +1,14 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sand4rt/playwright-ct-web.git"
+    "url": "git+https://github.com/sand4rt/playwright-ct-angular.git"
   },
   "bugs": {
-    "url": "https://github.com/sand4rt/playwright-ct-web/issues"
+    "url": "https://github.com/sand4rt/playwright-ct-angular/issues"
   },
   "engines": {
     "node": ">=14"
@@ -40,7 +40,6 @@
     }
   },
   "dependencies": {
-    "@analogjs/vite-plugin-angular": "0.2.0-alpha.28",
     "@angular-devkit/build-angular": "^15.2.0",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
@@ -56,7 +55,11 @@
     "vite": "^4.1.4"
   },
   "devDependencies": {
-    "@playwright/test": "1.31.0"
+    "@playwright/test": "1.31.0",
+    "@angular/common": ">=14",
+    "@angular/core": ">=14",
+    "@angular/platform-browser-dynamic": ">=14",
+    "zone.js": ">=0.11.0"
   },
   "peerDependencies": {
     "@playwright/test": ">=1.31.0"

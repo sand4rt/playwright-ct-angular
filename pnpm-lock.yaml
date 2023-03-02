@@ -46,7 +46,6 @@ importers:
 
   playwright-ct-angular:
     specifiers:
-      '@analogjs/vite-plugin-angular': 0.2.0-alpha.28
       '@angular-devkit/build-angular': ^15.2.0
       '@angular/common': ^15.2.0
       '@angular/compiler': ^15.2.0
@@ -62,7 +61,6 @@ importers:
       vite: ^4.1.4
       zone.js: ~0.12.0
     dependencies:
-      '@analogjs/vite-plugin-angular': 0.2.0-alpha.28_igkmkjuneo3w7fmvwhiayjbamy
       '@angular-devkit/build-angular': 15.2.0_sd6wiyaliiktrzknqbpb74hmcq
       '@angular/common': 15.2.0_6rl5h76dm6n755x2qkojsrrx44
       '@angular/compiler': 15.2.0_@angular+core@15.2.0
@@ -91,14 +89,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
-
-  /@analogjs/vite-plugin-angular/0.2.0-alpha.28_igkmkjuneo3w7fmvwhiayjbamy:
-    resolution: {integrity: sha512-22oymsRyIciJToLct7nLykhTzTz0O3r86Qtwzmg2veKlkZwTIgM9ezVtitJoqDRGiWxs/5ohI4/jOgAYEgliSg==}
-    peerDependencies:
-      '@angular-devkit/build-angular': ^14.0.0 || ^15.0.0
-    dependencies:
-      '@angular-devkit/build-angular': 15.2.0_sd6wiyaliiktrzknqbpb74hmcq
-    dev: false
 
   /@angular-devkit/architect/0.1402.10:
     resolution: {integrity: sha512-/6YmPrgataj1jD2Uqd1ED+CG4DaZGacoeZd/89hH7hF76Nno8K18DrSOqJAEmDnOWegpSRGVLd0qP09IHmaG5w==}
@@ -3085,6 +3075,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/darwin-x64/0.17.8:

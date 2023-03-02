@@ -25,7 +25,7 @@ function plugin() {
   const { createPlugin } = require('@playwright/test/lib/plugins/vitePlugin');
   return createPlugin(
     path.join(__dirname, 'registerSource.mjs'),
-    () => import('@analogjs/vite-plugin-angular').then(plugin => plugin.default)
+    () => require('./angularVitePlugin').default
   )
 };
 
