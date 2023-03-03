@@ -3,7 +3,7 @@
 > **Note**
 > The API has been designed to closely resemble Playwright's API wherever applicable. This library is _(without guarantee)_ aimed at facilitating a smooth transition to Playwright once it offers official support for Angular components. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.
 > 
-> To push for official support, feedback in the form of github issues and or stars is appreciated!
+> To push for official support, feedback in the form of GitHub issues and or stars is appreciated!
 
 ## Usage
 
@@ -56,3 +56,17 @@ test('render props', async ({ mount }) => {
 ```
 
 See the official [playwright component testing documentation](https://playwright.dev/docs/test-components) and the [tests](ct-angular/tests) for more information on how to use it.
+
+## TODO
+
+- [x] Render component with props/inputs: `mount(Component, { props: {} })`.
+- [x] Render component with slots/ng-content: `mount(Component, { slots: {} })`.
+- [x] Capturing events/outputs: `mount(Component, { on: {} })`.
+- [x] Unmount/Destroy component: `component.unmount()`.
+- [x] Update component props `component.update({ props: {} })`.
+- [x] Update component events `component.update({ on: {} })`.
+- [] Update component slots `component.update({ slots: {} })`.
+- [] Transpilation with Vite.
+- [] Testing components with a store and or router.
+- [] Override dependencies with dependency injection.
+- [] Testing components that are not standalone.
