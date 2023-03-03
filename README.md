@@ -59,14 +59,14 @@ See the official [playwright component testing documentation](https://playwright
 
 ## TODO
 
-- [x] Render component with props/inputs: `mount(Component, { props: {} })`.
-- [x] Render component with slots/ng-content: `mount(Component, { slots: {} })`.
-- [x] Capturing events/outputs: `mount(Component, { on: {} })`.
-- [x] Unmount/Destroy component: `component.unmount()`.
-- [x] Update component props `component.update({ props: {} })`.
-- [x] Update component events `component.update({ on: {} })`.
-- [] Update component slots `component.update({ slots: {} })`.
-- [] Transpilation with Vite.
-- [] Testing components with a store and or router.
-- [] Override dependencies with dependency injection.
-- [] Testing components that are not standalone.
+- [x] Render component with props/inputs: `mount(Component, { props: {} })`
+- [x] Render component with slots/ng-content: `mount(Component, { slots: {} })`
+- [x] Capturing events/outputs: `mount(Component, { on: {} })`
+- [x] Unmount/Destroy component: `component.unmount()`
+- [x] Update component props: `component.update({ props: {} })`
+- [x] Update component events: `component.update({ on: {} })`
+- [ ] Update component slots: `component.update({ slots: {} })`
+- [ ] Transpilation with Vite
+- [ ] Testing components with a store and or router
+- [ ] Override dependencies with dependency injection
+- [ ] Testing components that are not standalone
