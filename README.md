@@ -41,7 +41,7 @@ export class ButtonComponent {
 ```
 
 ```jsx
-// Button.test.ts
+// button.component.test.ts
 import { test, expect } from '@sand4rt/experimental-ct-angular';
 import { ButtonComponent } from './components/button.component';
 
@@ -68,5 +68,5 @@ See the official [playwright component testing documentation](https://playwright
 - [ ] Update component slots: `component.update({ slots: {} })`
 - [ ] Transpilation with Vite
 - [ ] Testing components with a store and or router
-- [ ] Override dependencies with dependency injection
+- [ ] Override/register dependencies with dependency injection
 - [ ] Testing components that are not standalone
