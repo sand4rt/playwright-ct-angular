@@ -1,12 +1,15 @@
 import { beforeMount, afterMount } from '@sand4rt/experimental-ct-angular/hooks';
-import '../src/assets/styles.css';
+import { ButtonComponent } from '@/components/button.component';
+import '@/assets/styles.css';
 
 export type HooksConfig = {
-  routing?: boolean
-}
+  routing?: boolean;
+};
 
 beforeMount<HooksConfig>(async ({ hooksConfig, TestBed }) => {
-  console.log('After mount');
+  TestBed.configureTestingModule({
+    imports: [ButtonComponent],
+  });
 });
 
 afterMount<HooksConfig>(async () => {

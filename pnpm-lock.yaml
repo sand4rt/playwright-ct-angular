@@ -51,6 +51,7 @@ importers:
       '@angular/core': ^15.2.0
       '@angular/platform-browser': ^15.2.0
       '@angular/platform-browser-dynamic': ^15.2.0
+      '@angular/router': ^15.2.0
       '@playwright/test': 1.31.0
       rxjs: ~7.8.0
       tslib: ^2.5.0
@@ -63,6 +64,7 @@ importers:
       '@angular/core': 15.2.0_rxjs@7.8.0+zone.js@0.12.0
       '@angular/platform-browser': 15.2.0_gvdsznzulkezfm6w67hlhkynfe
       '@angular/platform-browser-dynamic': 15.2.0_q3vtycdixm4mw4ocqkr6ifs2ty
+      '@angular/router': 15.2.1_za6jdduxquwsf5arpf6dzdovcm
       rxjs: 7.8.0
       tslib: 2.5.0
       vite: 4.1.4
@@ -478,6 +480,22 @@ packages:
       '@angular/core': 14.2.12_rxjs@7.5.7+zone.js@0.11.8
       '@angular/platform-browser': 14.2.12_dax2jypo47bpgiczdvqsh7iq24
       rxjs: 7.5.7
+      tslib: 2.5.0
+    dev: false
+
+  /@angular/router/15.2.1_za6jdduxquwsf5arpf6dzdovcm:
+    resolution: {integrity: sha512-KyCBpj7HXnGSLz1XRP/b3K2WKVgfdY84uJ1CSVsTjADiduIfvAd3LGDVERzkTo+JxAsL1CD/yg1nTiIbFbcuCA==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
+    peerDependencies:
+      '@angular/common': 15.2.1
+      '@angular/core': 15.2.1
+      '@angular/platform-browser': 15.2.1
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/common': 15.2.0_6rl5h76dm6n755x2qkojsrrx44
+      '@angular/core': 15.2.0_rxjs@7.8.0+zone.js@0.12.0
+      '@angular/platform-browser': 15.2.0_gvdsznzulkezfm6w67hlhkynfe
+      rxjs: 7.8.0
       tslib: 2.5.0
     dev: false
 

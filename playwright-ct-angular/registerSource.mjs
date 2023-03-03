@@ -32,8 +32,8 @@ const registry = new Map();
 const fixtureRegistry = new Map();
 
 getTestBed().initTestEnvironment(
-    BrowserDynamicTestingModule,
-    platformBrowserDynamicTesting()
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting(),
 );
 
 /**
