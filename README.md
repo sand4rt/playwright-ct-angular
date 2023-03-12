@@ -69,7 +69,7 @@ See the official [playwright component testing documentation](https://playwright
 - [x] Update component props: `component.update({ props: {} })`
 - [x] Update component events: `component.update({ on: {} })`
 - [ ] Update component slots: `component.update({ slots: {} })`
-- [ ] Transpilation with Vite
+- [ ] Transpilation with Vite trough [@analogjs/vite-plugin-angular](https://www.npmjs.com/package/@analogjs/vite-plugin-angular), for more info see: https://github.com/microsoft/playwright/issues/14153#issuecomment-1359709214
 - [ ] Testing components with a store and or router
 - [ ] Override/register dependencies with dependency injection
 - [ ] Testing components that are not standalone
