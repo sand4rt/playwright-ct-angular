@@ -32,7 +32,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   standalone: true,
-  selector: 'button-component'
+  selector: 'button-component',
   template: `<button>{{title}}</button>`,
 })
 export class ButtonComponent {
