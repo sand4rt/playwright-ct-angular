@@ -59,6 +59,9 @@ See the official [playwright component testing documentation](https://playwright
 
 ## TODO
 
+> **Note**
+> The library is still under development and not ready for production yet. This message including todolist will disappear when it's finished. Feel free to create a pull request if you want to contribute!
+
 - [x] Render component with props/inputs: `mount(Component, { props: {} })`
 - [x] Render component with slots/ng-content: `mount(Component, { slots: {} })`
 - [x] Capturing events/outputs: `mount(Component, { on: {} })`
