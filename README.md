@@ -66,9 +66,9 @@ See the official [playwright component testing documentation](https://playwright
 - [x] Render component with slots/ng-content: `mount(Component, { slots: {} })`
 - [x] Capturing events/outputs: `mount(Component, { on: {} })`
 - [x] Unmount/Destroy component: `component.unmount()`
-- [x] Update component props: `component.update({ props: {} })`
-- [x] Update component events: `component.update({ on: {} })`
-- [ ] Update component slots: `component.update({ slots: {} })`
+- [x] Update component props/inputs: `component.update({ props: {} })`
+- [x] Update component events/outputs: `component.update({ on: {} })`
+- [ ] Update component slots/ng-content: `component.update({ slots: {} })`
 - [ ] Transpilation with Vite through [@analogjs/vite-plugin-angular](https://www.npmjs.com/package/@analogjs/vite-plugin-angular), for more info see: https://github.com/microsoft/playwright/issues/14153#issuecomment-1359709214
 - [ ] Testing components with a store and or router
 - [ ] Override/register dependencies with dependency injection
