@@ -39,7 +39,7 @@ getTestBed().initTestEnvironment(
 /**
  * @param {{[key: string]: FrameworkComponent}} components
  */
-export function register(components) {
+export function pwRegister(components) {
   for (const [name, value] of Object.entries(components))
     registry.set(name, value);
 }
@@ -47,7 +47,7 @@ export function register(components) {
 /**
  * @param {import('@angular/core/testing').ComponentFixture} fixture
  */
-function updateProps(fixture, props = {}) {
+function __pwUpdateProps(fixture, props = {}) {
   for (const [name, value] of Object.entries(props))
     fixture.debugElement.children[0].context[name] = value;
 }
@@ -55,7 +55,7 @@ function updateProps(fixture, props = {}) {
 /**
  * @param {import('@angular/core/testing').ComponentFixture} fixture
  */
-function updateEvents(fixture, events = {}) {
+function __pwUpdateEvents(fixture, events = {}) {
   for (const [name, value] of Object.entries(events)) {
     fixture.debugElement.children[0].componentInstance[name] = {
       ...new EventEmitter(),
@@ -64,15 +64,15 @@ function updateEvents(fixture, events = {}) {
   }
 }
 
-function updateSlots(Component, slots = {}, tag) {
+function __pwUpdateSlots(Component, slots = {}, tag) {
   const wrapper = document.createElement(tag);
   for (const [key, value] of Object.entries(slots)) {
     let slotElements;
     if (typeof value !== 'object')
-      slotElements = [createSlot(value)];
+      slotElements = [__pwCreateSlot(value)];
 
     if (Array.isArray(value))
-      slotElements = value.map(createSlot);
+      slotElements = value.map(__pwCreateSlot);
 
     if (!slotElements)
       throw new Error(`Invalid slot with name: \`${key}\` supplied to \`mount()\``);
@@ -104,7 +104,7 @@ function updateSlots(Component, slots = {}, tag) {
  * @param {any} value
  * @return {?HTMLElement}
  */
-function createSlot(value) {
+function __pwCreateSlot(value) {
   return /** @type {?HTMLElement} */ (
     document
         .createRange()
@@ -116,7 +116,7 @@ function createSlot(value) {
 /**
  * @param {Component} component
  */
-async function renderComponent(component) {
+async function __pwRenderComponent(component) {
   let Component = registry.get(component.type);
   if (!Component) {
     // Lookup by shorthand.
@@ -150,7 +150,7 @@ async function renderComponent(component) {
 
   await TestBed.compileComponents();
 
-  updateSlots(WrapperComponent, component.options?.slots, componentMetadata.selector);
+  __pwUpdateSlots(WrapperComponent, component.options?.slots, componentMetadata.selector);
 
   // TODO: only inject when router is provided
   TestBed.inject(Router).initialNavigation();
@@ -158,8 +158,8 @@ async function renderComponent(component) {
   const fixture = TestBed.createComponent(WrapperComponent);
   fixture.nativeElement.id = 'root';
 
-  updateProps(fixture, component.options?.props);
-  updateEvents(fixture, component.options?.on);
+  __pwUpdateProps(fixture, component.options?.props);
+  __pwUpdateEvents(fixture, component.options?.on);
 
   fixture.autoDetectChanges();
 
@@ -170,7 +170,7 @@ window.playwrightMount = async (component, rootElement, hooksConfig) => {
   for (const hook of window.__pw_hooks_before_mount || [])
     await hook({ hooksConfig, TestBed });
 
-  const fixture = await renderComponent(component);
+  const fixture = await __pwRenderComponent(component);
 
   for (const hook of window.__pw_hooks_after_mount || [])
     await hook({ hooksConfig });
@@ -195,8 +195,8 @@ window.playwrightUpdate = async (rootElement, component) => {
   if (!fixture)
     throw new Error('Component was not mounted');
 
-  updateProps(fixture, component.options?.props);
-  updateEvents(fixture, component.options?.on);
+  __pwUpdateProps(fixture, component.options?.props);
+  __pwUpdateEvents(fixture, component.options?.on);
 
   fixture.detectChanges();
 };
