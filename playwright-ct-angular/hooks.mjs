@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+// TODO: move this import
+import '@angular/compiler';
+
 const __pw_hooks_before_mount = [];
 const __pw_hooks_after_mount = [];
 
