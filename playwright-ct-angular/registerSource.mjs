@@ -64,8 +64,8 @@ function __pwUpdateEvents(fixture, events = {}) {
   }
 }
 
-function __pwUpdateSlots(Component, slots = {}, tag) {
-  const wrapper = document.createElement(tag);
+function __pwUpdateSlots(Component, slots = {}, tagName) {
+  const wrapper = document.createElement(tagName);
   for (const [key, value] of Object.entries(slots)) {
     let slotElements;
     if (typeof value !== 'object')
