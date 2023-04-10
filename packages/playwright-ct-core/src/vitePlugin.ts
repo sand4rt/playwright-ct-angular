@@ -136,6 +136,7 @@ export function createPlugin(
       viteConfig.css.devSourcemap = true;
       viteConfig.build = {
         ...viteConfig.build,
+        outDir,
         target: 'esnext',
         minify: false,
         rollupOptions: {
