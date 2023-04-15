@@ -191,6 +191,9 @@ window.playwrightUpdate = async (rootElement, component) => {
   if (component.kind === 'jsx')
     throw new Error('JSX mount notation is not supported');
 
+  if (component.options?.slots)
+    throw new Error('Update slots is not supported yet');
+
   const fixture = fixtureRegistry.get(rootElement.id);
   if (!fixture)
     throw new Error('Component was not mounted');
