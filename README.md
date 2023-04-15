@@ -56,20 +56,3 @@ test('render props', async ({ mount }) => {
 ```
 
 See the official [playwright component testing documentation](https://playwright.dev/docs/test-components) and the [tests](ct-angular/tests) for more information on how to use it.
-
-## TODO
-
-> **Note**
-> The library is still under development and not ready for production yet. This message including todolist will disappear when it's finished. Feel free to create a pull request if you want to contribute!
-
-- [x] Render component with props/inputs: `mount(Component, { props: {} })`
-- [x] Render component with slots/ng-content: `mount(Component, { slots: {} })`
-- [x] Capturing events/outputs: `mount(Component, { on: {} })`
-- [x] Unmount/Destroy component: `component.unmount()`
-- [x] Update component props/inputs: `component.update({ props: {} })`
-- [ ] Update component slots/ng-content: `component.update({ slots: {} })`
-- [x] Update component events/outputs: `component.update({ on: {} })`
-- [x] Transpilation, perhaps through [@analogjs/vite-plugin-angular](https://www.npmjs.com/package/@analogjs/vite-plugin-angular), for more info see: https://github.com/microsoft/playwright/issues/14153#issuecomment-1359709214
-- [x] Testing components with a store and or router
-- [x] Override/register dependencies with dependency injection
-- [ ] Testing components that are not standalone
