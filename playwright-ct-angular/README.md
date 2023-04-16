@@ -55,4 +55,4 @@ test('render props', async ({ mount }) => {
 });
 ```
 
-See the official [playwright component testing documentation](https://playwright.dev/docs/test-components) and the [tests](ct-angular/tests) for more information on how to use it.
+See the official [playwright component testing documentation](https://playwright.dev/docs/test-components) and the [tests](https://github.com/sand4rt/playwright-ct-angular/tree/main/ct-angular/tests) for more information on how to use it.
