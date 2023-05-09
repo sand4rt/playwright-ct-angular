@@ -57,10 +57,10 @@ importers:
       '@angular/router': ^16.0.0
       '@playwright/experimental-ct-core': 1.33.0
       '@playwright/test': 1.33.0
-      rxjs: ~7.8.0
+      rxjs: ~7.8.1
       tslib: ^2.5.0
       typescript: ^5.0.4
-      vite: ^4.2.1
+      vite: ^4.3.5
       zone.js: ~0.13.0
     dependencies:
       '@analogjs/vite-plugin-angular': 0.2.0-beta.6_wquv46gpx6wmgjbakpzqb5djxi
