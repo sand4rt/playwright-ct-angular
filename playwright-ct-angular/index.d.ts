@@ -23,6 +23,7 @@ import type {
   PlaywrightWorkerOptions,
   Locator,
 } from '@playwright/test';
+import type { JsonObject } from '@playwright/experimental-ct-core/types/component';
 import type { InlineConfig } from 'vite';
 import type { Type } from '@angular/core';
 
@@ -34,11 +35,6 @@ export type PlaywrightTestConfig<T = {}, W = {}> = Omit<BasePlaywrightTestConfig
     ctViteConfig?: InlineConfig | (() => Promise<InlineConfig>);
   };
 };
-
-type JsonPrimitive = string | number | boolean | null;
-type JsonValue = JsonPrimitive | JsonObject | JsonArray;
-type JsonArray = JsonValue[];
-type JsonObject = { [Key in string]?: JsonValue };
 
 type Slot = string | string[];
 

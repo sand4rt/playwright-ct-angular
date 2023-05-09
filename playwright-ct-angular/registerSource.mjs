@@ -23,7 +23,7 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 import { EventEmitter, reflectComponentType, Component as defineComponent } from '@angular/core';
 import { Router } from '@angular/router';
 
-/** @typedef {import('@playwright/test/types/component').Component} Component */
+/** @typedef {import('@playwright/experimental-ct-core/types/component').Component} Component */
 /** @typedef {import('@angular/core').Type} FrameworkComponent */
 
 /** @type {Map<string, FrameworkComponent>} */
