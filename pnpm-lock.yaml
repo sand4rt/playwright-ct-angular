@@ -46,7 +46,7 @@ importers:
 
   playwright-ct-angular:
     specifiers:
-      '@analogjs/vite-plugin-angular': 0.2.0-beta.2
+      '@analogjs/vite-plugin-angular': 0.2.0-beta.6
       '@angular-devkit/build-angular': ^16.0.0
       '@angular/common': ^16.0.0
       '@angular/compiler': ^16.0.0
@@ -63,7 +63,7 @@ importers:
       vite: ^4.2.1
       zone.js: ~0.13.0
     dependencies:
-      '@analogjs/vite-plugin-angular': 0.2.0-beta.2_wquv46gpx6wmgjbakpzqb5djxi
+      '@analogjs/vite-plugin-angular': 0.2.0-beta.6_wquv46gpx6wmgjbakpzqb5djxi
       '@angular-devkit/build-angular': 16.0.0_xjoanj5bdg5beikq5slgjbial4
       '@angular/common': 16.0.0_uunrvtpg3qw7iz57rkbgz63bzi
       '@angular/compiler': 16.0.0_@angular+core@16.0.0
@@ -98,10 +98,10 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
 
-  /@analogjs/vite-plugin-angular/0.2.0-beta.2_wquv46gpx6wmgjbakpzqb5djxi:
-    resolution: {integrity: sha512-q6RJ1xSd73mfJh6iSMy9j6EJzmXG0ERsxzQt5ZlnzP2rA6Fplw/WAjddUmEjv+Wv8q8FtGEfHDvGRDtezvRf1w==}
+  /@analogjs/vite-plugin-angular/0.2.0-beta.6_wquv46gpx6wmgjbakpzqb5djxi:
+    resolution: {integrity: sha512-Xa61GYu+4UkNGhILPKSiWGO96tSTg4sDKZ1cG06MtUwYvMipXJX70Ni74pRCwvG6rooiXFwtz2UjeQLXFsDePA==}
     peerDependencies:
-      '@angular-devkit/build-angular': ^15.0.0 || ^16.0.0-rc.0
+      '@angular-devkit/build-angular': ^15.0.0 || ^16.0.0
     dependencies:
       '@angular-devkit/build-angular': 16.0.0_xjoanj5bdg5beikq5slgjbial4
     dev: false

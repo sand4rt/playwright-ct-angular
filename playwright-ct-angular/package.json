@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@playwright/experimental-ct-core": "1.33.0",
-    "@analogjs/vite-plugin-angular": "0.2.0-beta.2",
+    "@analogjs/vite-plugin-angular": "0.2.0-beta.6",
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular/compiler-cli": "^16.0.0",
     "@angular/common": "^16.0.0",
