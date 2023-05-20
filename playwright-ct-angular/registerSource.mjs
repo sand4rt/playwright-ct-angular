@@ -24,12 +24,16 @@ import { EventEmitter, reflectComponentType, Component as defineComponent } from
 import { Router } from '@angular/router';
 
 /** @typedef {import('@playwright/experimental-ct-core/types/component').Component} Component */
+/** @typedef {import('@playwright/experimental-ct-core/types/component').JsxComponent} JsxComponent */
+/** @typedef {import('@playwright/experimental-ct-core/types/component').ObjectComponent} ObjectComponent */
 /** @typedef {import('@angular/core').Type} FrameworkComponent */
 
+/** @type {Map<string, () => Promise<FrameworkComponent>>} */
+const __pwLoaderRegistry = new Map();
 /** @type {Map<string, FrameworkComponent>} */
-const registry = new Map();
+const __pwRegistry = new Map();
 /** @type {Map<string, import('@angular/core/testing').ComponentFixture>} */
-const fixtureRegistry = new Map();
+const __pwFixtureRegistry = new Map();
 
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -37,11 +41,47 @@ getTestBed().initTestEnvironment(
 );
 
 /**
- * @param {{[key: string]: FrameworkComponent}} components
+ * @param {{[key: string]: () => Promise<FrameworkComponent>}} components
  */
 export function pwRegister(components) {
   for (const [name, value] of Object.entries(components))
-    registry.set(name, value);
+    __pwLoaderRegistry.set(name, value);
+}
+
+/**
+ * @param {Component} component
+ * @returns {component is JsxComponent | ObjectComponent}
+ */
+function isComponent(component) {
+  return !(typeof component !== 'object' || Array.isArray(component));
+}
+
+/**
+ * @param {Component} component
+ */
+async function __pwResolveComponent(component) {
+  if (!isComponent(component))
+    return
+
+  let componentFactory = __pwLoaderRegistry.get(component.type);
+  if (!componentFactory) {
+    // Lookup by shorthand.
+    for (const [name, value] of __pwLoaderRegistry) {
+      if (component.type.endsWith(`_${name}`)) {
+        componentFactory = value;
+        break;
+      }
+    }
+  }
+
+  if (!componentFactory && component.type[0].toUpperCase() === component.type[0])
+    throw new Error(`Unregistered component: ${component.type}. Following components are registered: ${[...__pwRegistry.keys()]}`);
+
+  if(componentFactory)
+    __pwRegistry.set(component.type, await componentFactory())
+
+  if ('children' in component)
+    await Promise.all(component.children.map(child => __pwResolveComponent(child)))
 }
 
 /**
@@ -117,19 +157,9 @@ function __pwCreateSlot(value) {
  * @param {Component} component
  */
 async function __pwRenderComponent(component) {
-  let Component = registry.get(component.type);
-  if (!Component) {
-    // Lookup by shorthand.
-    for (const [name, value] of registry) {
-      if (component.type.endsWith(`_${name}`)) {
-        Component = value;
-        break;
-      }
-    }
-  }
-
+  const Component = __pwRegistry.get(component.type);
   if (!Component)
-    throw new Error(`Unregistered component: ${component.type}. Following components are registered: ${[...registry.keys()]}`);
+    throw new Error(`Unregistered component: ${component.type}. Following components are registered: ${[...__pwRegistry.keys()]}`);
 
   if (component.kind !== 'object')
     throw new Error('JSX mount notation is not supported');
@@ -167,6 +197,7 @@ async function __pwRenderComponent(component) {
 }
 
 window.playwrightMount = async (component, rootElement, hooksConfig) => {
+  await __pwResolveComponent(component);
   for (const hook of window.__pw_hooks_before_mount || [])
     await hook({ hooksConfig, TestBed });
 
@@ -175,11 +206,11 @@ window.playwrightMount = async (component, rootElement, hooksConfig) => {
   for (const hook of window.__pw_hooks_after_mount || [])
     await hook({ hooksConfig });
 
-  fixtureRegistry.set(rootElement.id, fixture);
+  __pwFixtureRegistry.set(rootElement.id, fixture);
 };
 
 window.playwrightUnmount = async rootElement => {
-  const fixture = fixtureRegistry.get(rootElement.id);
+  const fixture = __pwFixtureRegistry.get(rootElement.id);
   if (!fixture)
     throw new Error('Component was not mounted');
 
@@ -188,13 +219,14 @@ window.playwrightUnmount = async rootElement => {
 };
 
 window.playwrightUpdate = async (rootElement, component) => {
+  await __pwResolveComponent(component);
   if (component.kind === 'jsx')
     throw new Error('JSX mount notation is not supported');
 
   if (component.options?.slots)
     throw new Error('Update slots is not supported yet');
 
-  const fixture = fixtureRegistry.get(rootElement.id);
+  const fixture = __pwFixtureRegistry.get(rootElement.id);
   if (!fixture)
     throw new Error('Component was not mounted');
 
