@@ -7,21 +7,16 @@
 
 ## Usage
 
-First, install playwright and initialize component testing, then install the Angular adapter.
+Initialize Playwright Angular component testing with PNPM, NPM or Yarn and follow the installation steps:
 
 ```sh
-npm init playwright@latest -- --ct
-npm install -D @sand4rt/experimental-ct-angular
+pnpm dlx create-playwright-sand4rt --ct
 ```
-
-After installing the config needs to be modified:
-
-```ts
-import { defineConfig } from '@sand4rt/experimental-ct-angular';
-
-export default defineConfig({
-  // ...Your config
-});
+```sh
+npm init playwright-sand4rt@latest -- --ct
+```
+```sh
+yarn create playwright-sand4rt --ct
 ```
 
 Now you can start adding your first test:
@@ -41,7 +36,7 @@ export class ButtonComponent {
 ```
 
 ```jsx
-// Button.test.ts
+// button.component.test.ts
 import { test, expect } from '@sand4rt/experimental-ct-angular';
 import { ButtonComponent } from './components/button.component';
 
