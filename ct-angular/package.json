@@ -18,16 +18,16 @@
     "@angular/platform-browser": "^15.1.0",
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
-    "rxjs": "~7.5.0",
+    "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.1.0",
     "@angular/cli": "~15.1.0",
     "@angular/compiler-cli": "^15.1.0",
     "@playwright/test": "1.34.3",
-    "@sand4rt/experimental-ct-angular": "*",
-    "typescript": "~4.9.0"
+    "@sand4rt/experimental-ct-angular": "workspace:*",
+    "typescript": "~4.9.4"
   }
 }
