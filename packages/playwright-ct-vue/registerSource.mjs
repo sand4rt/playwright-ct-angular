@@ -17,7 +17,7 @@
 
 // This file is injected into the registry as text, no dependencies are allowed.
 
-import { createApp as __pwCreateApp, setDevtoolsHook as __pwSetDevtoolsHook, h as __pwH } from 'vue';
+import { createApp as __pwCreateApp, setDevtoolsHook as __pwSetDevtoolsHook, h as __pwH, render as __pwRender } from 'vue';
 import { compile as __pwCompile } from '@vue/compiler-dom';
 import * as __pwVue from 'vue';
 
@@ -216,6 +216,7 @@ function __pwWrapFunctions(slots) {
  */
 function __pwCreateWrapper(component) {
   const { Component, props, slots, listeners } = __pwCreateComponent(component);
+  Component.__pwType = component.type;
   // @ts-ignore
   const wrapper = __pwH(Component, props, slots);
   __pwAllListeners.set(wrapper, listeners);
@@ -273,6 +274,36 @@ window.playwrightUnmount = async rootElement => {
   app.unmount();
 };
 
+
+function __pwUpdateComponent(wrapper, wrap) {
+  // if (!isComponent(component))
+  //   return;
+
+  // if (component.kind === 'object')
+  //   return;
+
+  // if (!wrapper)
+  //   throw new Error('Component was not mounted');
+
+  // if (!wrapper.component)
+  //   throw new Error('Updating a native HTML element is not supported');
+
+  // const { props } = __pwCreateComponent(component);
+  
+  // wrapper.component.slots = __pwWrapFunctions(slots);
+  // __pwAllListeners.set(wrapper, listeners);
+
+  for (const [key, value] of Object.entries(wrap.props))
+    wrapper.component.props[key] = value;
+
+  if (!Object.keys(wrap.props).length)
+    wrapper.component.update();
+
+  wrap.children?.forEach((child, index) => {
+    __pwUpdateComponent(wrapper.children.at(index), child);
+  })
+}
+
 window.playwrightUpdate = async (rootElement, component) => {
   await __pwResolveComponent(component);
   const wrapper = rootElement[__pwWrapperKey];
@@ -281,15 +312,40 @@ window.playwrightUpdate = async (rootElement, component) => {
 
   if (!wrapper.component)
     throw new Error('Updating a native HTML element is not supported');
-  
-  const { slots, listeners, props } = __pwCreateComponent(component);
 
-  wrapper.component.slots = __pwWrapFunctions(slots);
+    function stringify(val, depth, replacer, space) {
+      depth = isNaN(+depth) ? 1 : depth;
+      function _build(key, val, depth, o, a) { // (JSON.stringify() has it's own rules, which we respect here by using it for property iteration)
+          return !val || typeof val != 'object' ? val : (a=Array.isArray(val), JSON.stringify(val, function(k,v){ if (a || depth > 0) { if (replacer) v=replacer(k,v); if (!k) return (a=Array.isArray(v),val=v); !o && (o=a?[]:{}); o[k] = _build(k, v, a?depth:depth-1); } }), o||(a?[]:{}));
+      }
+      return JSON.stringify(_build('', val, depth), null, space);
+  }
+
+  console.log(component)
+  console.log(stringify(wrapper, 3))
+
+  const { Component, props, slots, listeners } = __pwCreateComponent(component);
+  const wrap = __pwH(Component, props, slots);
+
+  // wrapper.component.slots = __pwWrapFunctions(slots);
   __pwAllListeners.set(wrapper, listeners);
+  __pwUpdateComponent(wrapper, wrap);
 
-  for (const [key, value] of Object.entries(props))
-    wrapper.component.props[key] = value;
+  // wrapper.children = wrap.children;
 
-  if (!Object.keys(props).length)
-    wrapper.component.update();
+  // wrapper.type.render(__pwCreateWrapper(component))
+  // console.log(wrapper);
+  // const { slots, listeners, props } = __pwCreateComponent(component);
+  // wrapper.component.slots = __pwWrapFunctions(slots);
+
+  // __pwUpdateComponent(component, wrapper);
+  // __pwAllListeners.set(wrapper, listeners);
+
+  // wrapper.component.slots = __pwCreateWrapper(component);
+
+  // for (const [key, value] of Object.entries(wrap.props))
+  //   wrapper.component.props[key] = value;
+
+  // // if (!Object.keys(props).length)
+  //   wrapper.component.update();
 };

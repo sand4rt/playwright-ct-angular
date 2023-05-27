@@ -150,7 +150,7 @@ export function createPlugin(
             index: path.join(templateDir, 'index.html')
           },
         },
-        sourcemap: true,
+        sourcemap: false,
       };
 
       if (sourcesDirty) {

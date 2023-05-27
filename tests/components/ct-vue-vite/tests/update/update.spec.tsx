@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/experimental-ct-vue';
+import { test, expect } from '@playwright/experimental-ct-react17';
 import Counter from '@/components/Counter.vue';
+import DefaultSlot from '@/components/DefaultSlot.vue';
 
 test('update props without remounting', async ({ mount }) => {
   const component = await mount(<Counter count={9001} />);
@@ -9,45 +10,82 @@ test('update props without remounting', async ({ mount }) => {
   await expect(component).not.toContainText('9001');
   await expect(component.getByTestId('props')).toContainText('1337');
 
-  await expect(component.getByTestId('remount-count')).toContainText('1');
+  await expect(component.getByTestId('remount-count')).toContainText('2');
 });
 
-test('update event listeners without remounting', async ({ mount }) => {
+test('update child props without remounting', async ({ mount }) => {
+  const component = await mount(<DefaultSlot><Counter count={9001} /></DefaultSlot>);
+  await expect(component.getByTestId('props')).toContainText('9001');
+
+  await component.update(<DefaultSlot><Counter count={1337} /></DefaultSlot>);
+  await expect(component).not.toContainText('9001');
+  await expect(component.getByTestId('props')).toContainText('1337');
+
+  await expect(component.getByTestId('remount-count')).toContainText('2');
+});
+
+test('update callbacks without remounting', async ({ mount }) => {
   const component = await mount(<Counter />);
 
   const messages: string[] = [];
   await component.update(
     <Counter
-      v-on:submit={(count: string) => {
-        messages.push(count);
+      v-on:submit={(message) => {
+        messages.push(message);
       }}
     />
   );
   await component.click();
   expect(messages).toEqual(['hello']);
 
-  await expect(component.getByTestId('remount-count')).toContainText('1');
+  await expect(component.getByTestId('remount-count')).toContainText('2');
 });
 
-test('update slots without remounting', async ({ mount }) => {
+test('update child callbacks without remounting', async ({ mount }) => {
+  const component = await mount(<DefaultSlot><Counter /></DefaultSlot>);
+
+  const messages: string[] = [];
+  await component.update(
+    <DefaultSlot>
+      <Counter
+        v-on:submit={(message) => {
+          messages.push(message);
+        }}
+      />
+    </DefaultSlot>
+  );
+  await component.getByRole('button').click();
+  expect(messages).toEqual(['hello']);
+
+  await expect(component.getByTestId('remount-count')).toContainText('2');
+});
+
+test('update children without remounting', async ({ mount }) => {
   const component = await mount(<Counter>Default Slot</Counter>);
   await expect(component).toContainText('Default Slot');
 
-  await component.update(
-    <Counter>
-      <template v-slot:main>Test Slot</template>
-    </Counter>
-  );
+  await component.update(<Counter>Test Slot</Counter>);
   await expect(component).not.toContainText('Default Slot');
   await expect(component).toContainText('Test Slot');
 
-  await expect(component.getByTestId('remount-count')).toContainText('1');
+  await expect(component.getByTestId('remount-count')).toContainText('2');
 });
 
-test('throw error when updating a native html element', async ({ mount }) => {
-  const component = await mount(<div id="1337"></div>);
-  
-  await expect(async () => {
-    await component.update(<div id="9001"></div>);
-  }).rejects.toThrowError('Updating a native HTML element is not supported');
+test.only('update grandchild without remounting', async ({ mount }) => {
+  const component = await mount(
+    <DefaultSlot>
+      <Counter>Default Slot</Counter>
+    </DefaultSlot>
+  );
+  await expect(component.getByRole('button')).toContainText('Default Slot');
+
+  await component.update(
+    <DefaultSlot>
+      <Counter>Test Slot</Counter>
+    </DefaultSlot>
+  );
+  await expect(component.getByRole('button')).not.toContainText('Default Slot');
+  await expect(component.getByRole('button')).toContainText('Test Slot');
+
+  await expect(component.getByTestId('remount-count')).toContainText('2');
 });

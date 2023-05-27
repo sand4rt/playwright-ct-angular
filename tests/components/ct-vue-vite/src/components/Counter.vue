@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-let remountCount = 0
+let remountCount = 0;
 </script>
 
 <script lang="ts" setup>
@@ -16,4 +16,3 @@ defineProps<{ count?: number }>()
 
 remountCount++
 </script>
-
