@@ -25,13 +25,21 @@ function plugin() {
   const { createPlugin } = require('@playwright/experimental-ct-core/lib/vitePlugin');
   return createPlugin(
     path.join(__dirname, 'registerSource.mjs'),
-    () => import('@analogjs/vite-plugin-angular').then(plugin => {
-      if (typeof plugin.default === 'function')
-        return plugin.default({ jit: false })
-      
-      // TODO: fix plugin resolving (default.default)
-      return plugin.default.default({ jit: false })
-    })
+    {
+      plugins: [import('@analogjs/vite-plugin-angular').then(plugin => {
+        if (typeof plugin.default === 'function')
+          return plugin.default({ jit: false })
+        
+        // TODO: fix plugin resolving (default.default)
+        return plugin.default.default({ jit: false })
+      })],
+      build: {
+        sourcemap: false, // TODO: set sourcemap true: https://github.com/sand4rt/playwright-ct-angular/issues/6 
+        rollupOptions: {
+          treeshake: true
+        }
+      }
+    }
   )
 };
 
