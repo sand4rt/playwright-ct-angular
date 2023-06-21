@@ -1,6 +1,6 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "1.35.0",
+  "version": "1.35.1",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
@@ -40,7 +40,7 @@
     }
   },
   "dependencies": {
-    "@playwright/experimental-ct-core": "1.35.0",
+    "@playwright/experimental-ct-core": "1.35.1",
     "@analogjs/vite-plugin-angular": "0.2.0-beta.13",
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular/animations": "^16.0.0",
@@ -57,11 +57,11 @@
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.35.0",
+    "@playwright/test": "1.35.1",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "@playwright/test": ">=1.35.0",
+    "@playwright/test": ">=1.35.1",
     "typescript": ">=4.9.3"
   },
   "bin": {

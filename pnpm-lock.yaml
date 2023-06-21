@@ -42,16 +42,16 @@ importers:
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^15.1.0
-        version: 15.1.0(@angular/compiler-cli@15.1.0)(typescript@4.9.4)
+        version: 15.1.0(@angular/compiler-cli@15.2.9)(typescript@4.9.4)
       '@angular/cli':
         specifier: ~15.1.0
         version: 15.1.0
       '@angular/compiler-cli':
         specifier: ^15.1.0
-        version: 15.1.0(@angular/compiler@15.1.0)(typescript@4.9.4)
+        version: 15.2.9(@angular/compiler@15.1.0)(typescript@4.9.4)
       '@playwright/test':
-        specifier: 1.35.0
-        version: 1.35.0
+        specifier: 1.35.1
+        version: 1.35.1
       '@sand4rt/experimental-ct-angular':
         specifier: workspace:*
         version: link:../playwright-ct-angular
@@ -92,8 +92,8 @@ importers:
         specifier: ^16.0.0
         version: 16.0.0(@angular/common@16.0.0)(@angular/core@16.0.0)(@angular/platform-browser@16.0.0)(rxjs@7.8.1)
       '@playwright/experimental-ct-core':
-        specifier: 1.35.0
-        version: 1.35.0
+        specifier: 1.35.1
+        version: 1.35.1
       rxjs:
         specifier: ~7.8.1
         version: 7.8.1
@@ -108,8 +108,8 @@ importers:
         version: 0.13.0
     devDependencies:
       '@playwright/test':
-        specifier: 1.35.0
-        version: 1.35.0
+        specifier: 1.35.1
+        version: 1.35.1
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
@@ -169,7 +169,7 @@ packages:
       - chokidar
     dev: false
 
-  /@angular-devkit/build-angular@15.1.0(@angular/compiler-cli@15.1.0)(typescript@4.9.4):
+  /@angular-devkit/build-angular@15.1.0(@angular/compiler-cli@15.2.9)(typescript@4.9.4):
     resolution: {integrity: sha512-xTrsdwwFkSv58of99+1FSxu64Grulh0j/UH2JNOLrf34TCMYnAaRUfZcCJTqJuX2sZDsyoR2w+bAhtvYEj4A5A==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -202,7 +202,7 @@ packages:
       '@angular-devkit/architect': 0.1501.0(chokidar@3.5.3)
       '@angular-devkit/build-webpack': 0.1501.0(chokidar@3.5.3)(webpack-dev-server@4.11.1)(webpack@5.75.0)
       '@angular-devkit/core': 15.1.0(chokidar@3.5.3)
-      '@angular/compiler-cli': 15.1.0(@angular/compiler@15.1.0)(typescript@4.9.4)
+      '@angular/compiler-cli': 15.2.9(@angular/compiler@15.1.0)(typescript@4.9.4)
       '@babel/core': 7.20.12
       '@babel/generator': 7.20.7
       '@babel/helper-annotate-as-pure': 7.18.6
@@ -213,7 +213,7 @@ packages:
       '@babel/runtime': 7.20.7
       '@babel/template': 7.20.7
       '@discoveryjs/json-ext': 0.5.7
-      '@ngtools/webpack': 15.1.0(@angular/compiler-cli@15.1.0)(typescript@4.9.4)(webpack@5.75.0)
+      '@ngtools/webpack': 15.1.0(@angular/compiler-cli@15.2.9)(typescript@4.9.4)(webpack@5.75.0)
       ansi-colors: 4.1.3
       autoprefixer: 10.4.13(postcss@8.4.21)
       babel-loader: 9.1.2(@babel/core@7.20.12)(webpack@5.75.0)
@@ -563,12 +563,12 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@angular/compiler-cli@15.1.0(@angular/compiler@15.1.0)(typescript@4.9.4):
-    resolution: {integrity: sha512-mKeXolM/plP9ebkHy3YGxHx0Yg63d09S0QCpdIcmvrbJpaPeM2D1SAkbDpO46T4BsfgfWHtSYByb5JcesrYrpQ==}
+  /@angular/compiler-cli@15.2.9(@angular/compiler@15.1.0)(typescript@4.9.4):
+    resolution: {integrity: sha512-zsbI8G2xHOeYWI0hjFzrI//ZhZV9il/uQW5dAimfwJp06KZDeXZ3PdwY9JQslf6F+saLwOObxy6QMrIVvfjy9w==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 15.1.0
+      '@angular/compiler': 15.2.9
       typescript: '>=4.8.2 <5.0'
     dependencies:
       '@angular/compiler': 15.1.0(@angular/core@15.1.0)
@@ -899,7 +899,7 @@ packages:
       '@babel/compat-data': 7.22.0
       '@babel/core': 7.19.3
       '@babel/helper-validator-option': 7.21.0
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       lru-cache: 5.1.1
       semver: 6.3.0
 
@@ -912,7 +912,7 @@ packages:
       '@babel/compat-data': 7.22.0
       '@babel/core': 7.20.12
       '@babel/helper-validator-option': 7.21.0
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       lru-cache: 5.1.1
       semver: 6.3.0
     dev: true
@@ -926,7 +926,7 @@ packages:
       '@babel/compat-data': 7.22.0
       '@babel/core': 7.21.4
       '@babel/helper-validator-option': 7.21.0
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       lru-cache: 5.1.1
       semver: 6.3.0
 
@@ -3586,7 +3586,7 @@ packages:
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
 
-  /@ngtools/webpack@15.1.0(@angular/compiler-cli@15.1.0)(typescript@4.9.4)(webpack@5.75.0):
+  /@ngtools/webpack@15.1.0(@angular/compiler-cli@15.2.9)(typescript@4.9.4)(webpack@5.75.0):
     resolution: {integrity: sha512-7CyQk5eADg0fsi+EDa3DWIyR+CjymcyToWU0uBpuyrZCl5gUnzgeWZIQiQ0HyaMxWPfQ5cwwZ1YeAwkxMpKL2w==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -3594,7 +3594,7 @@ packages:
       typescript: '>=4.8.2 <5.0'
       webpack: ^5.54.0
     dependencies:
-      '@angular/compiler-cli': 15.1.0(@angular/compiler@15.1.0)(typescript@4.9.4)
+      '@angular/compiler-cli': 15.2.9(@angular/compiler@15.1.0)(typescript@4.9.4)
       typescript: 4.9.4
       webpack: 5.75.0(esbuild@0.16.16)
     dev: true
@@ -3635,14 +3635,14 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       '@gar/promisify': 1.1.3
-      semver: 7.3.8
+      semver: 7.5.1
     dev: true
 
   /@npmcli/fs@3.1.0:
     resolution: {integrity: sha512-7kZUAaLscfgbwBQRbvdMYaZOWyMEcPTH/tJjnyAWJ/dvvs9Ef+CERx/qJb9GExJpl1qipaDGn7KqHnFGGixd0w==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      semver: 7.4.0
+      semver: 7.5.1
 
   /@npmcli/git@4.0.4:
     resolution: {integrity: sha512-5yZghx+u5M47LghaybLCkdSyFzV/w4OuH12d96HO389Ik9CDsLaDZJVynSGGVJOLn6gy/k7Dz5XYcplM3uxXRg==}
@@ -3654,7 +3654,7 @@ packages:
       proc-log: 3.0.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.3.8
+      semver: 7.5.1
       which: 3.0.1
     transitivePeerDependencies:
       - bluebird
@@ -3710,12 +3710,12 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@playwright/experimental-ct-core@1.35.0:
-    resolution: {integrity: sha512-LHaN7eN4+s0w8DriVvODwCWiiPtP9tHsXysHhyhJxHBSlca+hxplHFTsMG4BYQhGiADzQRx/QvLB63zfcG0rCQ==}
+  /@playwright/experimental-ct-core@1.35.1:
+    resolution: {integrity: sha512-NSoUf6JDLeZFy0HiENwA1GkIwZHvg5KrygnZknwWs7O8yksYLsmiuMb09sf2zsZmfYgVen401SNgf3KfekbweA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@playwright/test': 1.35.0
+      '@playwright/test': 1.35.1
       vite: 4.3.9
     transitivePeerDependencies:
       - '@types/node'
@@ -3726,13 +3726,13 @@ packages:
       - terser
     dev: false
 
-  /@playwright/test@1.35.0:
-    resolution: {integrity: sha512-6qXdd5edCBynOwsz1YcNfgX8tNWeuS9fxy5o59D0rvHXxRtjXRebB4gE4vFVfEMXl/z8zTnAzfOs7aQDEs8G4Q==}
+  /@playwright/test@1.35.1:
+    resolution: {integrity: sha512-b5YoFe6J9exsMYg0pQAobNDR85T1nLumUYgUTtKm4d21iX2L7WqKq9dW8NGJ+2vX0etZd+Y7UeuqsxDXm9+5ZA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
       '@types/node': 20.2.4
-      playwright-core: 1.35.0
+      playwright-core: 1.35.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -4489,6 +4489,7 @@ packages:
       electron-to-chromium: 1.4.409
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.4)
+    dev: true
 
   /browserslist@4.21.5:
     resolution: {integrity: sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==}
@@ -4512,7 +4513,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.3.8
+      semver: 7.5.1
     dev: true
 
   /bytes@3.0.0:
@@ -4894,7 +4895,7 @@ packages:
       postcss-modules-scope: 3.0.0(postcss@8.4.21)
       postcss-modules-values: 4.0.0(postcss@8.4.21)
       postcss-value-parser: 4.2.0
-      semver: 7.3.8
+      semver: 7.5.1
       webpack: 5.75.0(esbuild@0.16.16)
     dev: true
 
@@ -4911,7 +4912,7 @@ packages:
       postcss-modules-scope: 3.0.0(postcss@8.4.21)
       postcss-modules-values: 4.0.0(postcss@8.4.21)
       postcss-value-parser: 4.2.0
-      semver: 7.3.8
+      semver: 7.5.1
       webpack: 5.80.0(esbuild@0.17.18)
     dev: false
 
@@ -6472,7 +6473,7 @@ packages:
       nopt: 6.0.0
       npmlog: 6.0.2
       rimraf: 3.0.2
-      semver: 7.3.8
+      semver: 7.5.1
       tar: 6.1.15
       which: 2.0.2
     transitivePeerDependencies:
@@ -6497,7 +6498,7 @@ packages:
     dependencies:
       hosted-git-info: 6.1.1
       is-core-module: 2.12.1
-      semver: 7.3.8
+      semver: 7.5.1
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -6520,7 +6521,7 @@ packages:
     resolution: {integrity: sha512-dH3GmQL4vsPtld59cOn8uY0iOqRmqKvV+DLGwNXV/Q7MDgD2QfOADWd/mFXcIE5LVhYYGjA3baz6W9JneqnuCw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      semver: 7.3.8
+      semver: 7.5.1
     dev: true
 
   /npm-normalize-package-bin@3.0.1:
@@ -6534,7 +6535,7 @@ packages:
     dependencies:
       hosted-git-info: 6.1.1
       proc-log: 3.0.0
-      semver: 7.3.8
+      semver: 7.5.1
       validate-npm-package-name: 5.0.0
     dev: true
 
@@ -6552,7 +6553,7 @@ packages:
       npm-install-checks: 6.1.1
       npm-normalize-package-bin: 3.0.1
       npm-package-arg: 10.1.0
-      semver: 7.3.8
+      semver: 7.5.1
     dev: true
 
   /npm-registry-fetch@14.0.5:
@@ -6833,8 +6834,8 @@ packages:
     dependencies:
       find-up: 4.1.0
 
-  /playwright-core@1.35.0:
-    resolution: {integrity: sha512-muMXyPmIx/2DPrCHOD1H1ePT01o7OdKxKj2ebmCAYvqhUy+Y1bpal7B0rdoxros7YrXI294JT/DWw2LqyiqTPA==}
+  /playwright-core@1.35.1:
+    resolution: {integrity: sha512-pNXb6CQ7OqmGDRspEjlxE49w+4YtR6a3X6mT1hZXeJHWmsEz7SunmvZeiG/+y1yyMZdHnnn73WKYdtV1er0Xyg==}
     engines: {node: '>=16'}
     hasBin: true
 
@@ -6848,7 +6849,7 @@ packages:
       cosmiconfig: 7.1.0
       klona: 2.0.6
       postcss: 8.4.21
-      semver: 7.3.8
+      semver: 7.5.1
       webpack: 5.75.0(esbuild@0.16.16)
     dev: true
 
@@ -6870,7 +6871,7 @@ packages:
       cosmiconfig-typescript-loader: 4.3.0(cosmiconfig@8.1.3)(typescript@5.0.4)
       klona: 2.0.6
       postcss: 8.4.23
-      semver: 7.4.0
+      semver: 7.5.1
       typescript: 5.0.4
       webpack: 5.80.0(esbuild@0.17.18)
     transitivePeerDependencies:
@@ -7318,6 +7319,7 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: true
 
   /semver@7.4.0:
     resolution: {integrity: sha512-RgOxM8Mw+7Zus0+zcLEUn8+JfoLpj/huFTItQy2hsM4khuC1HYRDp0cU482Ewn/Fcy6bCjufD8vAj7voC66KQw==}
@@ -7325,6 +7327,7 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: false
 
   /semver@7.5.1:
     resolution: {integrity: sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==}
@@ -7875,6 +7878,7 @@ packages:
       browserslist: 4.21.4
       escalade: 3.1.1
       picocolors: 1.0.0
+    dev: true
 
   /update-browserslist-db@1.0.11(browserslist@4.21.5):
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
