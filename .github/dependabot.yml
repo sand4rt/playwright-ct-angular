@@ -7,3 +7,11 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/ct-angular"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/playwright-ct-angular"
+    schedule:
+      interval: "daily"
