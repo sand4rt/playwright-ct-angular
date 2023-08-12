@@ -11,6 +11,8 @@ updates:
     directory: "/ct-angular"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-name: "@playwright/test"
   - package-ecosystem: "npm"
     directory: "/playwright-ct-angular"
     schedule:
