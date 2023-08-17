@@ -36,18 +36,24 @@ export type PlaywrightTestConfig<T = {}, W = {}> = Omit<BasePlaywrightTestConfig
   };
 };
 
-type Slot = string | string[];
+type ComponentSlot = string | string[];
+type ComponentSlots = Record<string, ComponentSlot> & { default?: ComponentSlot };
+
+type ComponentEvents = Record<string, Function>;
 
 export interface MountOptions<HooksConfig extends JsonObject, Component> {
   props?: Partial<Component>, // TODO: filter props
-  slots?: Record<string, Slot> & { default?: Slot };
-  on?: Record<string, Function>;
+  slots?: ComponentSlots;
+  on?: ComponentEvents;
   hooksConfig?: HooksConfig;
 }
 
 interface MountResult<Component> extends Locator {
   unmount(): Promise<void>;
-  update(options: Omit<Omit<MountOptions<never, Component>, 'hooksConfig'>, 'slots'>): Promise<void>;
+  update(options: {
+    props?: Partial<Component>,
+    on?: Partial<ComponentEvents>,
+  }): Promise<void>;
 }
 
 export interface ComponentFixtures {
