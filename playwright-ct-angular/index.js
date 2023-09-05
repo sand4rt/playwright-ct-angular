@@ -24,7 +24,12 @@ function plugin() {
   const { createPlugin } = require('@playwright/experimental-ct-core/lib/vitePlugin');
   return createPlugin(
     path.join(__dirname, 'registerSource.mjs'),
-    () => import('@analogjs/vite-plugin-angular').then(plugin => plugin.default())
+    () => import('@analogjs/vite-plugin-angular').then(plugin => {
+      // TODO: remove the typeof plugin.default check
+      if (typeof plugin.default === 'function')
+        return plugin.default()
+      return plugin.default.default()
+    })
   )
 };
 
