@@ -20,7 +20,7 @@ Along with all these ✨ awesome capabilities ✨ that come with Playwright, you
 - [Watch mode _(BETA)_](https://github.com/microsoft/playwright/issues/21960#issuecomment-1483604692).
 - [Visual Studio Code intergration](https://playwright.dev/docs/getting-started-vscode).
 - [UI mode](https://playwright.dev/docs/test-ui-mode) for debuging tests with a time travel experience complete with watch mode.
-- [Playwright Tracing](https://playwright.dev/docs/trace-viewer-intro) for post-mortem debugging.
+- [Playwright Tracing](https://playwright.dev/docs/trace-viewer-intro) for post-mortem debugging in CI.
 - [Playwright Test Code generation](https://playwright.dev/docs/codegen-intro) to record and generate tests suites.
 
 ## Usage
