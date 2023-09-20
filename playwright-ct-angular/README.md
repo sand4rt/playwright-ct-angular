@@ -2,13 +2,13 @@
 
 > **Note**
 > The API has been designed to closely resemble Playwright's API wherever applicable. This library is _(without guarantee)_ aimed at facilitating a smooth transition to Playwright once it offers official support for Angular components. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.
-> 
+>
 > To push for official support, feedback in the form of GitHub issues and or stars is appreciated!
 
 ## Capabilities
 
 - Run tests fast, in parallel and optionally [over multiple machines](https://playwright.dev/docs/test-sharding).
-- Run the test accross multiple _real_ desktop and mobile browsers.
+- Run the test headless or headed accross multiple _real_ desktop and mobile browsers.
 - Full support for shadow DOM, multiple origins, (i)frames, tabs and contexts.
 - Minimizes flakyness, due to auto waiting, web first assertions and ensures that every test runs in full isolation.
 - Advanced [emulation capabilities](https://playwright.dev/docs/emulation) such as modifying screen size, color scheme and [the network](https://playwright.dev/docs/mock-browser-apis).
