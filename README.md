@@ -10,7 +10,7 @@
 - Run tests fast, in parallel and optionally [over multiple machines](https://playwright.dev/docs/test-sharding).
 - Run the test headless or headed accross multiple _real_ desktop and/or mobile browser engines.
 - Full support for shadow DOM, multiple origins, (i)frames, browser tabs and contexts.
-- Minimizes flakyness, due to auto waiting, web first assertions and ensures that every test runs in full isolation.
+- Minimizes flakyness, due to auto waiting, web first assertions and ensures that every test runs in [full isolation](https://playwright.dev/docs/browser-contexts).
 - Advanced [emulation capabilities](https://playwright.dev/docs/emulation) such as modifying screen size, geolocation, color scheme and [the network](https://playwright.dev/docs/mock-browser-apis).
 - Interactions with the components are indistinguishable from real user behavior.
 - [Visual regression / screenshot testing](https://playwright.dev/docs/api/class-pageassertions#page-assertions-to-have-screenshot-1).
