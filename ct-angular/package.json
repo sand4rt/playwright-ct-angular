@@ -26,7 +26,7 @@
     "@angular-devkit/build-angular": "^15.1.0",
     "@angular/cli": "~15.1.0",
     "@angular/compiler-cli": "^15.1.0",
-    "@playwright/test": "1.38.0",
+    "@playwright/test": "1.38.1",
     "@sand4rt/experimental-ct-angular": "workspace:*",
     "typescript": "~4.9.4"
   }
