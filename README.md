@@ -29,7 +29,7 @@ Along with all these ✨ awesome capabilities ✨ that come with Playwright, you
 Initialize Playwright Angular component testing with PNPM, NPM or Yarn and follow the installation steps:
 
 ```sh
-pnpm dlx create-playwright-sand4rt --ct
+pnpm create playwright-sand4rt --ct
 ```
 ```sh
 npm init playwright-sand4rt@latest -- --ct
