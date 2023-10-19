@@ -44,3 +44,13 @@ test('render a component with a named slot', async ({ mount }) => {
   await expect(component).toContainText('Main Content');
   await expect(component).toContainText('Footer');
 });
+
+test('render string as child', async ({ mount }) => {
+  const component = await mount(<DefaultSlot>{'string'}</DefaultSlot>);
+  await expect(component).toContainText('string');
+});
+
+test('render number as child', async ({ mount }) => {
+  const component = await mount(<DefaultSlot>{1337}</DefaultSlot>);
+  await expect(component).toContainText('1337');
+});

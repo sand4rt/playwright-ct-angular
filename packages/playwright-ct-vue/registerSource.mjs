@@ -78,11 +78,11 @@ async function __pwResolveComponent(component) {
 const __pwAllListeners = new Map();
 
 /**
- * @param {Component | string} child
- * @returns {import('vue').VNode | string}
+ * @param {Component} child
+ * @returns {import('vue').VNode | any}
  */
 function __pwCreateChild(child) {
-  return typeof child === 'string' ? child : __pwCreateWrapper(child);
+  return isComponent(child) ? __pwCreateWrapper(child) : child;
 }
 
 /**
