@@ -28,7 +28,7 @@ import { RawHeaders } from './network';
 import type { FilePayload, Headers, StorageState } from './types';
 import type { Playwright } from './playwright';
 import { Tracing } from './tracing';
-import { isTargetClosedError } from '../common/errors';
+import { isTargetClosedError } from './errors';
 
 export type FetchOptions = {
   params?: { [key: string]: string; },
@@ -93,6 +93,10 @@ export class APIRequestContext extends ChannelOwner<channels.APIRequestContextCh
   constructor(parent: ChannelOwner, type: string, guid: string, initializer: channels.APIRequestContextInitializer) {
     super(parent, type, guid, initializer);
     this._tracing = Tracing.from(initializer.tracing);
+  }
+
+  async [Symbol.asyncDispose]() {
+    await this.dispose();
   }
 
   async dispose(): Promise<void> {
@@ -168,13 +172,13 @@ export class APIRequestContext extends ChannelOwner<channels.APIRequestContextCh
       if (options.data !== undefined) {
         if (isString(options.data)) {
           if (isJsonContentType(headers))
-            jsonData = options.data;
+            jsonData = isJsonParsable(options.data) ? options.data : JSON.stringify(options.data);
           else
             postDataBuffer = Buffer.from(options.data, 'utf8');
         } else if (Buffer.isBuffer(options.data)) {
           postDataBuffer = options.data;
         } else if (typeof options.data === 'object' || typeof options.data === 'number' || typeof options.data === 'boolean') {
-          jsonData = options.data;
+          jsonData = JSON.stringify(options.data);
         } else {
           throw new Error(`Unexpected 'data' type`);
         }
@@ -227,6 +231,20 @@ export class APIRequestContext extends ChannelOwner<channels.APIRequestContextCh
       await fs.promises.writeFile(options.path, JSON.stringify(state, undefined, 2), 'utf8');
     }
     return state;
+  }
+}
+
+function isJsonParsable(value: any) {
+  if (typeof value !== 'string')
+    return false;
+  try {
+    JSON.parse(value);
+    return true;
+  } catch (e) {
+    if (e instanceof SyntaxError)
+      return false;
+    else
+      throw e;
   }
 }
 
@@ -286,6 +304,10 @@ export class APIResponse implements api.APIResponse {
   async json(): Promise<object> {
     const content = await this.text();
     return JSON.parse(content);
+  }
+
+  async [Symbol.asyncDispose]() {
+    await this.dispose();
   }
 
   async dispose(): Promise<void> {

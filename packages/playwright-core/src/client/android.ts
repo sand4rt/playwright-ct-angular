@@ -27,7 +27,7 @@ import { TimeoutSettings } from '../common/timeoutSettings';
 import { Waiter } from './waiter';
 import { EventEmitter } from 'events';
 import { Connection } from './connection';
-import { isTargetClosedError, TargetClosedError } from '../common/errors';
+import { isTargetClosedError, TargetClosedError } from './errors';
 import { raceAgainstDeadline } from '../utils/timeoutRunner';
 import type { AndroidServerLauncherImpl } from '../androidServerImpl';
 
@@ -234,6 +234,10 @@ export class AndroidDevice extends ChannelOwner<channels.AndroidDeviceChannel> i
     return binary;
   }
 
+  async [Symbol.asyncDispose]() {
+    await this.close();
+  }
+
   async close() {
     try {
       if (this._shouldCloseConnectionOnClose)
@@ -281,7 +285,7 @@ export class AndroidDevice extends ChannelOwner<channels.AndroidDeviceChannel> i
       const waiter = Waiter.createForEvent(this, event);
       waiter.rejectOnTimeout(timeout, `Timeout ${timeout}ms exceeded while waiting for event "${event}"`);
       if (event !== Events.AndroidDevice.Close)
-        waiter.rejectOnEvent(this, Events.AndroidDevice.Close, new TargetClosedError());
+        waiter.rejectOnEvent(this, Events.AndroidDevice.Close, () => new TargetClosedError());
       const result = await waiter.waitForEvent(this, event, predicate as any);
       waiter.dispose();
       return result;
@@ -306,6 +310,10 @@ export class AndroidSocket extends ChannelOwner<channels.AndroidSocketChannel> i
 
   async close(): Promise<void> {
     await this._channel.close();
+  }
+
+  async [Symbol.asyncDispose]() {
+    await this.close();
   }
 }
 

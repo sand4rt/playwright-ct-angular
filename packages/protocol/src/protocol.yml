@@ -288,7 +288,7 @@ APIRequestContext:
           type: array?
           items: NameValue
         postData: binary?
-        jsonData: json?
+        jsonData: string?
         formData:
           type: array?
           items: NameValue
@@ -904,6 +904,8 @@ Browser:
   commands:
 
     close:
+      parameters:
+        reason: string?
 
     killForTests:
 
@@ -1030,6 +1032,8 @@ BrowserContext:
     clearPermissions:
 
     close:
+      parameters:
+        reason: string?
 
     cookies:
       parameters:
@@ -1158,6 +1162,7 @@ BrowserContext:
     createTempFile:
       parameters:
         name: string
+        lastModifiedMs: number?
       returns:
         writableStream: WritableStream
 
@@ -1282,6 +1287,7 @@ Page:
     close:
       parameters:
         runBeforeUnload: boolean?
+        reason: string?
 
     emulateMedia:
       parameters:
@@ -3051,7 +3057,7 @@ Artifact:
 
     pathAfterFinished:
       returns:
-        value: string?
+        value: string
 
     # Blocks path/failure/delete/context.close until saved to the local |path|.
     saveAs:
@@ -3069,7 +3075,7 @@ Artifact:
 
     stream:
       returns:
-        stream: Stream?
+        stream: Stream
 
     cancel:
 

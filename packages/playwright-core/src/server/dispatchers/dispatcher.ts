@@ -16,16 +16,16 @@
 
 import { EventEmitter } from 'events';
 import type * as channels from '@protocol/channels';
-import { serializeError } from '../../protocol/serializers';
 import { findValidator, ValidationError, createMetadataValidator, type ValidatorContext } from '../../protocol/validator';
-import { assert, isUnderTest, monotonicTime } from '../../utils';
-import { TargetClosedError } from '../../common/errors';
+import { assert, isUnderTest, monotonicTime, rewriteErrorMessage } from '../../utils';
+import { TargetClosedError, isTargetClosedError, serializeError } from '../errors';
 import type { CallMetadata } from '../instrumentation';
 import { SdkObject } from '../instrumentation';
 import type { PlaywrightDispatcher } from './playwrightDispatcher';
 import { eventsHelper } from '../..//utils/eventsHelper';
 import type { RegisteredListener } from '../..//utils/eventsHelper';
 import type * as trace from '@trace/trace';
+import { isProtocolError } from '../protocolError';
 
 export const dispatcherSymbol = Symbol('dispatcher');
 const metadataValidator = createMetadataValidator();
@@ -329,6 +329,18 @@ export class DispatcherConnection {
       const validator = findValidator(dispatcher._type, method, 'Result');
       callMetadata.result = validator(result, '', { tChannelImpl: this._tChannelImplToWire.bind(this), binary: this._isLocal ? 'buffer' : 'toBase64' });
     } catch (e) {
+      if (isTargetClosedError(e) && sdkObject) {
+        const reason = closeReason(sdkObject);
+        if (reason)
+          rewriteErrorMessage(e, reason);
+      } else if (isProtocolError(e)) {
+        if (e.type === 'closed') {
+          const reason = sdkObject ? closeReason(sdkObject) : undefined;
+          e = new TargetClosedError(reason, e.browserLogMessage());
+        } else if (e.type === 'crashed') {
+          rewriteErrorMessage(e, 'Target crashed ' + e.browserLogMessage());
+        }
+      }
       callMetadata.error = serializeError(e);
     } finally {
       callMetadata.endTime = monotonicTime();
@@ -344,4 +356,10 @@ export class DispatcherConnection {
     }
     this.onmessage(response);
   }
+}
+
+function closeReason(sdkObject: SdkObject): string | undefined {
+  return sdkObject.attribution.page?._closeReason ||
+    sdkObject.attribution.context?._closeReason ||
+    sdkObject.attribution.browser?._closeReason;
 }

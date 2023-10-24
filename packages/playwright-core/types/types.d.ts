@@ -2002,6 +2002,11 @@ export interface Page {
    */
   close(options?: {
     /**
+     * The reason to be reported to the operations interrupted by the page closure.
+     */
+    reason?: string;
+
+    /**
      * Defaults to `false`. Whether to run the
      * [before unload](https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload) page handlers.
      */
@@ -3627,7 +3632,8 @@ export interface Page {
     /**
      * If specified, updates the given HAR with the actual network information instead of serving from file. The file is
      * written to disk when
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) is called.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) is
+     * called.
      */
     update?: boolean;
 
@@ -4701,6 +4707,8 @@ export interface Page {
   request: APIRequestContext;
 
   touchscreen: Touchscreen;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 /**
@@ -7556,7 +7564,7 @@ export interface BrowserContext {
    * Emitted when Browser context gets closed. This might happen because of one of the following:
    * - Browser context is closed.
    * - Browser application is closed or crashed.
-   * - The [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
+   * - The [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
    */
   on(event: 'close', listener: (browserContext: BrowserContext) => void): this;
 
@@ -7627,12 +7635,6 @@ export interface BrowserContext {
   on(event: 'page', listener: (page: Page) => void): this;
 
   /**
-   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
-   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
-   */
-  on(event: 'weberror', listener: (webError: WebError) => void): this;
-
-  /**
    * Emitted when a request is issued from any pages created through this context. The [request] object is read-only. To
    * only listen for requests from a particular page, use
    * [page.on('request')](https://playwright.dev/docs/api/class-page#page-event-request).
@@ -7678,6 +7680,12 @@ export interface BrowserContext {
   on(event: 'serviceworker', listener: (worker: Worker) => void): this;
 
   /**
+   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
+   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
+   */
+  on(event: 'weberror', listener: (webError: WebError) => void): this;
+
+  /**
    * Adds an event listener that will be automatically removed after it is triggered once. See `addListener` for more information about this event.
    */
   once(event: 'backgroundpage', listener: (page: Page) => void): this;
@@ -7705,11 +7713,6 @@ export interface BrowserContext {
   /**
    * Adds an event listener that will be automatically removed after it is triggered once. See `addListener` for more information about this event.
    */
-  once(event: 'weberror', listener: (webError: WebError) => void): this;
-
-  /**
-   * Adds an event listener that will be automatically removed after it is triggered once. See `addListener` for more information about this event.
-   */
   once(event: 'request', listener: (request: Request) => void): this;
 
   /**
@@ -7733,6 +7736,11 @@ export interface BrowserContext {
   once(event: 'serviceworker', listener: (worker: Worker) => void): this;
 
   /**
+   * Adds an event listener that will be automatically removed after it is triggered once. See `addListener` for more information about this event.
+   */
+  once(event: 'weberror', listener: (webError: WebError) => void): this;
+
+  /**
    * **NOTE** Only works with Chromium browser's persistent context.
    *
    * Emitted when new background page is created in the context.
@@ -7748,7 +7756,7 @@ export interface BrowserContext {
    * Emitted when Browser context gets closed. This might happen because of one of the following:
    * - Browser context is closed.
    * - Browser application is closed or crashed.
-   * - The [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
+   * - The [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
    */
   addListener(event: 'close', listener: (browserContext: BrowserContext) => void): this;
 
@@ -7819,12 +7827,6 @@ export interface BrowserContext {
   addListener(event: 'page', listener: (page: Page) => void): this;
 
   /**
-   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
-   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
-   */
-  addListener(event: 'weberror', listener: (webError: WebError) => void): this;
-
-  /**
    * Emitted when a request is issued from any pages created through this context. The [request] object is read-only. To
    * only listen for requests from a particular page, use
    * [page.on('request')](https://playwright.dev/docs/api/class-page#page-event-request).
@@ -7870,6 +7872,12 @@ export interface BrowserContext {
   addListener(event: 'serviceworker', listener: (worker: Worker) => void): this;
 
   /**
+   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
+   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
+   */
+  addListener(event: 'weberror', listener: (webError: WebError) => void): this;
+
+  /**
    * Removes an event listener added by `on` or `addListener`.
    */
   removeListener(event: 'backgroundpage', listener: (page: Page) => void): this;
@@ -7893,11 +7901,6 @@ export interface BrowserContext {
    * Removes an event listener added by `on` or `addListener`.
    */
   removeListener(event: 'page', listener: (page: Page) => void): this;
-
-  /**
-   * Removes an event listener added by `on` or `addListener`.
-   */
-  removeListener(event: 'weberror', listener: (webError: WebError) => void): this;
 
   /**
    * Removes an event listener added by `on` or `addListener`.
@@ -7927,6 +7930,11 @@ export interface BrowserContext {
   /**
    * Removes an event listener added by `on` or `addListener`.
    */
+  removeListener(event: 'weberror', listener: (webError: WebError) => void): this;
+
+  /**
+   * Removes an event listener added by `on` or `addListener`.
+   */
   off(event: 'backgroundpage', listener: (page: Page) => void): this;
 
   /**
@@ -7948,11 +7956,6 @@ export interface BrowserContext {
    * Removes an event listener added by `on` or `addListener`.
    */
   off(event: 'page', listener: (page: Page) => void): this;
-
-  /**
-   * Removes an event listener added by `on` or `addListener`.
-   */
-  off(event: 'weberror', listener: (webError: WebError) => void): this;
 
   /**
    * Removes an event listener added by `on` or `addListener`.
@@ -7980,6 +7983,11 @@ export interface BrowserContext {
   off(event: 'serviceworker', listener: (worker: Worker) => void): this;
 
   /**
+   * Removes an event listener added by `on` or `addListener`.
+   */
+  off(event: 'weberror', listener: (webError: WebError) => void): this;
+
+  /**
    * **NOTE** Only works with Chromium browser's persistent context.
    *
    * Emitted when new background page is created in the context.
@@ -7995,7 +8003,7 @@ export interface BrowserContext {
    * Emitted when Browser context gets closed. This might happen because of one of the following:
    * - Browser context is closed.
    * - Browser application is closed or crashed.
-   * - The [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
+   * - The [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
    */
   prependListener(event: 'close', listener: (browserContext: BrowserContext) => void): this;
 
@@ -8066,12 +8074,6 @@ export interface BrowserContext {
   prependListener(event: 'page', listener: (page: Page) => void): this;
 
   /**
-   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
-   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
-   */
-  prependListener(event: 'weberror', listener: (webError: WebError) => void): this;
-
-  /**
    * Emitted when a request is issued from any pages created through this context. The [request] object is read-only. To
    * only listen for requests from a particular page, use
    * [page.on('request')](https://playwright.dev/docs/api/class-page#page-event-request).
@@ -8115,6 +8117,12 @@ export interface BrowserContext {
    * Emitted when new service worker is created in the context.
    */
   prependListener(event: 'serviceworker', listener: (worker: Worker) => void): this;
+
+  /**
+   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
+   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
+   */
+  prependListener(event: 'weberror', listener: (webError: WebError) => void): this;
 
   /**
    * Adds cookies into this browser context. All pages within this context will have these cookies installed. Cookies
@@ -8208,8 +8216,14 @@ export interface BrowserContext {
    * Closes the browser context. All the pages that belong to the browser context will be closed.
    *
    * **NOTE** The default browser context cannot be closed.
+   * @param options
    */
-  close(): Promise<void>;
+  close(options?: {
+    /**
+     * The reason to be reported to the operations interrupted by the context closure.
+     */
+    reason?: string;
+  }): Promise<void>;
 
   /**
    * If no URLs are specified, this method returns all cookies. If URLs are specified, only cookies that affect those
@@ -8395,7 +8409,8 @@ export interface BrowserContext {
     /**
      * If specified, updates the given HAR with the actual network information instead of serving from file. The file is
      * written to disk when
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) is called.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) is
+     * called.
      */
     update?: boolean;
 
@@ -8587,7 +8602,7 @@ export interface BrowserContext {
    * Emitted when Browser context gets closed. This might happen because of one of the following:
    * - Browser context is closed.
    * - Browser application is closed or crashed.
-   * - The [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
+   * - The [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
    */
   waitForEvent(event: 'close', optionsOrPredicate?: { predicate?: (browserContext: BrowserContext) => boolean | Promise<boolean>, timeout?: number } | ((browserContext: BrowserContext) => boolean | Promise<boolean>)): Promise<BrowserContext>;
 
@@ -8658,12 +8673,6 @@ export interface BrowserContext {
   waitForEvent(event: 'page', optionsOrPredicate?: { predicate?: (page: Page) => boolean | Promise<boolean>, timeout?: number } | ((page: Page) => boolean | Promise<boolean>)): Promise<Page>;
 
   /**
-   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
-   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
-   */
-  waitForEvent(event: 'weberror', optionsOrPredicate?: { predicate?: (webError: WebError) => boolean | Promise<boolean>, timeout?: number } | ((webError: WebError) => boolean | Promise<boolean>)): Promise<WebError>;
-
-  /**
    * Emitted when a request is issued from any pages created through this context. The [request] object is read-only. To
    * only listen for requests from a particular page, use
    * [page.on('request')](https://playwright.dev/docs/api/class-page#page-event-request).
@@ -8708,6 +8717,12 @@ export interface BrowserContext {
    */
   waitForEvent(event: 'serviceworker', optionsOrPredicate?: { predicate?: (worker: Worker) => boolean | Promise<boolean>, timeout?: number } | ((worker: Worker) => boolean | Promise<boolean>)): Promise<Worker>;
 
+  /**
+   * Emitted when exception is unhandled in any of the pages in this context. To listen for errors from a particular
+   * page, use [page.on('pageerror')](https://playwright.dev/docs/api/class-page#page-event-page-error) instead.
+   */
+  waitForEvent(event: 'weberror', optionsOrPredicate?: { predicate?: (webError: WebError) => boolean | Promise<boolean>, timeout?: number } | ((webError: WebError) => boolean | Promise<boolean>)): Promise<WebError>;
+
 
   /**
    * API testing helper associated with this context. Requests made with this API will use context cookies.
@@ -8715,6 +8730,8 @@ export interface BrowserContext {
   request: APIRequestContext;
 
   tracing: Tracing;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 /**
@@ -8979,6 +8996,8 @@ export interface JSHandle<T = any> {
    * @param propertyName property to get
    */
   getProperty(propertyName: string): Promise<JSHandle>;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 /**
@@ -12968,8 +12987,8 @@ export interface BrowserType<Unused = {}> {
     /**
      * Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into `recordHar.path` file.
      * If not specified, the HAR is not recorded. Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for the HAR to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * the HAR to be saved.
      */
     recordHar?: {
       /**
@@ -13009,8 +13028,8 @@ export interface BrowserType<Unused = {}> {
     /**
      * Enables video recording for all pages into `recordVideo.dir` directory. If not specified videos are not recorded.
      * Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for videos to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * videos to be saved.
      */
     recordVideo?: {
       /**
@@ -13734,6 +13753,8 @@ export interface ElectronApplication {
    * Convenience method that returns all the opened windows.
    */
   windows(): Array<Page>;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 export type AndroidElementInfo = {
@@ -14379,8 +14400,8 @@ export interface AndroidDevice {
     /**
      * Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into `recordHar.path` file.
      * If not specified, the HAR is not recorded. Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for the HAR to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * the HAR to be saved.
      */
     recordHar?: {
       /**
@@ -14420,8 +14441,8 @@ export interface AndroidDevice {
     /**
      * Enables video recording for all pages into `recordVideo.dir` directory. If not specified videos are not recorded.
      * Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for videos to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * videos to be saved.
      */
     recordVideo?: {
       /**
@@ -14793,6 +14814,8 @@ export interface AndroidDevice {
   webViews(): Array<AndroidWebView>;
 
   input: AndroidInput;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 export interface AndroidInput {
@@ -14928,6 +14951,8 @@ export interface AndroidSocket {
    * @param data Data to write.
    */
   write(data: Buffer): Promise<void>;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 /**
@@ -15867,6 +15892,8 @@ export interface APIRequestContext {
       }>;
     }>;
   }>;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 /**
@@ -15937,6 +15964,8 @@ export interface APIResponse {
    * Contains the URL of the response.
    */
   url(): string;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 /**
@@ -15963,7 +15992,7 @@ export interface Browser extends EventEmitter {
    * Emitted when Browser gets disconnected from the browser application. This might happen because of one of the
    * following:
    * - Browser application is closed or crashed.
-   * - The [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
+   * - The [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
    */
   on(event: 'disconnected', listener: (browser: Browser) => void): this;
 
@@ -15976,7 +16005,7 @@ export interface Browser extends EventEmitter {
    * Emitted when Browser gets disconnected from the browser application. This might happen because of one of the
    * following:
    * - Browser application is closed or crashed.
-   * - The [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
+   * - The [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
    */
   addListener(event: 'disconnected', listener: (browser: Browser) => void): this;
 
@@ -15994,7 +16023,7 @@ export interface Browser extends EventEmitter {
    * Emitted when Browser gets disconnected from the browser application. This might happen because of one of the
    * following:
    * - Browser application is closed or crashed.
-   * - The [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
+   * - The [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close) method was called.
    */
   prependListener(event: 'disconnected', listener: (browser: Browser) => void): this;
 
@@ -16012,14 +16041,20 @@ export interface Browser extends EventEmitter {
    * the browser server.
    *
    * **NOTE** This is similar to force quitting the browser. Therefore, you should call
-   * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) on any {@link
-   * BrowserContext}'s you explicitly created earlier with
+   * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) on
+   * any {@link BrowserContext}'s you explicitly created earlier with
    * [browser.newContext([options])](https://playwright.dev/docs/api/class-browser#browser-new-context) **before**
-   * calling [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close).
+   * calling [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close).
    *
    * The {@link Browser} object itself is considered to be disposed and cannot be used anymore.
+   * @param options
    */
-  close(): Promise<void>;
+  close(options?: {
+    /**
+     * The reason to be reported to the operations interrupted by the browser closure.
+     */
+    reason?: string;
+  }): Promise<void>;
 
   /**
    * Returns an array of all open browser contexts. In a newly created browser, this will return zero browser contexts.
@@ -16054,10 +16089,10 @@ export interface Browser extends EventEmitter {
    *
    * **NOTE** If directly using this method to create {@link BrowserContext}s, it is best practice to explicitly close
    * the returned context via
-   * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) when your code
-   * is done with the {@link BrowserContext}, and before calling
-   * [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close). This will ensure the `context` is
-   * closed gracefully and any artifacts—like HARs and videos—are fully flushed and saved.
+   * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) when
+   * your code is done with the {@link BrowserContext}, and before calling
+   * [browser.close([options])](https://playwright.dev/docs/api/class-browser#browser-close). This will ensure the
+   * `context` is closed gracefully and any artifacts—like HARs and videos—are fully flushed and saved.
    *
    * **Usage**
    *
@@ -16258,8 +16293,8 @@ export interface Browser extends EventEmitter {
     /**
      * Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into `recordHar.path` file.
      * If not specified, the HAR is not recorded. Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for the HAR to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * the HAR to be saved.
      */
     recordHar?: {
       /**
@@ -16299,8 +16334,8 @@ export interface Browser extends EventEmitter {
     /**
      * Enables video recording for all pages into `recordVideo.dir` directory. If not specified videos are not recorded.
      * Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for videos to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * videos to be saved.
      */
     recordVideo?: {
       /**
@@ -16526,6 +16561,8 @@ export interface Browser extends EventEmitter {
    * Returns the browser version.
    */
   version(): string;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 export interface BrowserServer {
@@ -16582,6 +16619,8 @@ export interface BrowserServer {
    * to establish connection to the browser.
    */
   wsEndpoint(): string;
+
+  [Symbol.asyncDispose](): Promise<void>;
 }
 
 /**
@@ -16878,7 +16917,7 @@ export interface Download {
   /**
    * Returns readable stream for current download or `null` if download failed.
    */
-  createReadStream(): Promise<null|Readable>;
+  createReadStream(): Promise<Readable>;
 
   /**
    * Deletes the downloaded file. Will wait for the download to finish if necessary.
@@ -16903,7 +16942,7 @@ export interface Download {
    * [download.suggestedFilename()](https://playwright.dev/docs/api/class-download#download-suggested-filename) to get
    * suggested file name.
    */
-  path(): Promise<null|string>;
+  path(): Promise<string>;
 
   /**
    * Copy the download to a user-specified path. It is safe to call this method while the download is still in progress.
@@ -17093,8 +17132,8 @@ export interface Electron {
     /**
      * Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into `recordHar.path` file.
      * If not specified, the HAR is not recorded. Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for the HAR to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * the HAR to be saved.
      */
     recordHar?: {
       /**
@@ -17134,8 +17173,8 @@ export interface Electron {
     /**
      * Enables video recording for all pages into `recordVideo.dir` directory. If not specified videos are not recorded.
      * Make sure to await
-     * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for videos to
-     * be saved.
+     * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+     * videos to be saved.
      */
     recordVideo?: {
       /**
@@ -19472,8 +19511,8 @@ export interface BrowserContextOptions {
   /**
    * Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into `recordHar.path` file.
    * If not specified, the HAR is not recorded. Make sure to await
-   * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for the HAR to
-   * be saved.
+   * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+   * the HAR to be saved.
    */
   recordHar?: {
     /**
@@ -19513,8 +19552,8 @@ export interface BrowserContextOptions {
   /**
    * Enables video recording for all pages into `recordVideo.dir` directory. If not specified videos are not recorded.
    * Make sure to await
-   * [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for videos to
-   * be saved.
+   * [browserContext.close([options])](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) for
+   * videos to be saved.
    */
   recordVideo?: {
     /**
@@ -20304,6 +20343,8 @@ type Devices = {
   "Pixel 4a (5G) landscape": DeviceDescriptor;
   "Pixel 5": DeviceDescriptor;
   "Pixel 5 landscape": DeviceDescriptor;
+  "Pixel 7": DeviceDescriptor;
+  "Pixel 7 landscape": DeviceDescriptor;
   "Moto G4": DeviceDescriptor;
   "Moto G4 landscape": DeviceDescriptor;
   "Desktop Chrome HiDPI": DeviceDescriptor;

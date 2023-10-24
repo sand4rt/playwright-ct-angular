@@ -41,7 +41,7 @@ import type { ScreenshotOptions } from './screenshotter';
 import type { InputFilesItems } from './dom';
 import { asLocator } from '../utils/isomorphic/locatorGenerators';
 import { FrameSelectors } from './frameSelectors';
-import { TimeoutError } from '../common/errors';
+import { TimeoutError } from './errors';
 
 type ContextData = {
   contextPromise: ManualPromise<dom.FrameExecutionContext | { destroyedReason: string }>;
@@ -1532,7 +1532,7 @@ export class Frame extends SdkObject {
 
   _onDetached() {
     this._stopNetworkIdleTimer();
-    this._detachedScope.close('Frame was detached');
+    this._detachedScope.close(new Error('Frame was detached'));
     for (const data of this._contextData.values()) {
       if (data.context)
         data.context.contextDestroyed('Frame was detached');
