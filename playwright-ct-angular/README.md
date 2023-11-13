@@ -7,7 +7,7 @@
 
 ## Capabilities
 
-- Run tests fast, in parallel and optionally [over multiple machines](https://playwright.dev/docs/test-sharding).
+- Run tests fast, in parallel and optionally over multiple machines with [sharding](https://playwright.dev/docs/test-sharding) or [Azure's Testing Service](https://www.youtube.com/watch?v=FvyYC2pxL_8).
 - Run the test headless or headed accross multiple _real_ desktop and/or mobile browser engines.
 - Full support for shadow DOM, multiple origins, (i)frames, browser tabs and contexts.
 - Minimizes flakyness, due to auto waiting, web first assertions and ensures that every test runs in [full isolation](https://playwright.dev/docs/browser-contexts).
