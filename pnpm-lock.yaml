@@ -66,8 +66,8 @@ importers:
   playwright-ct-angular:
     dependencies:
       '@analogjs/vite-plugin-angular':
-        specifier: 0.2.10
-        version: 0.2.10(@angular-devkit/build-angular@16.1.0)
+        specifier: 0.2.28
+        version: 0.2.28(@angular-devkit/build-angular@16.1.0)
       '@angular-devkit/build-angular':
         specifier: ^16.1.0
         version: 16.1.0(@angular/compiler-cli@16.1.7)(typescript@5.0.4)
@@ -135,10 +135,10 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
 
-  /@analogjs/vite-plugin-angular@0.2.10(@angular-devkit/build-angular@16.1.0):
-    resolution: {integrity: sha512-xOE0/dlIylEYxYUTAfW462uIdijNHLYGBz6mntQKMLl45or8/08R0N90HXG1YGdNssc5B8SeDt+lZRJ3SgCXYw==}
+  /@analogjs/vite-plugin-angular@0.2.28(@angular-devkit/build-angular@16.1.0):
+    resolution: {integrity: sha512-HWwsfQYivU0Iv1pWtQRpEEW9m5FyPQY6/uAY3CL5/SHcHn7OAOTrLqZolFp0my2Q5JXqQccVrBcDbJr4UTMPZQ==}
     peerDependencies:
-      '@angular-devkit/build-angular': ^15.0.0 || ^16.0.0
+      '@angular-devkit/build-angular': ^15.0.0 || >=16.0.0
     dependencies:
       '@angular-devkit/build-angular': 16.1.0(@angular/compiler-cli@16.1.7)(typescript@5.0.4)
     dev: false
