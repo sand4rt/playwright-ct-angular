@@ -54,8 +54,8 @@ importers:
         specifier: ^15.1.0
         version: 15.1.0(@angular/compiler@15.1.0)(typescript@4.9.4)
       '@playwright/test':
-        specifier: 1.40.1
-        version: 1.40.1
+        specifier: 1.41.0
+        version: 1.41.0
       '@sand4rt/experimental-ct-angular':
         specifier: workspace:*
         version: link:../playwright-ct-angular
@@ -72,8 +72,8 @@ importers:
         specifier: ^16.1.0
         version: 16.1.0(@angular/compiler-cli@16.1.7)(typescript@5.0.4)
       '@playwright/experimental-ct-core':
-        specifier: 1.40.1
-        version: 1.40.1(less@4.1.3)
+        specifier: 1.41.0
+        version: 1.41.0(less@4.1.3)
       vite:
         specifier: ^4.4.9
         version: 4.4.9(less@4.1.3)
@@ -103,8 +103,8 @@ importers:
         specifier: ^16.1.7
         version: 16.1.7(@angular/common@16.1.7)(@angular/core@16.1.7)(@angular/platform-browser@16.1.7)(rxjs@7.8.1)
       '@playwright/test':
-        specifier: 1.40.1
-        version: 1.40.1
+        specifier: 1.41.0
+        version: 1.41.0
       rxjs:
         specifier: ~7.8.1
         version: 7.8.1
@@ -3722,14 +3722,14 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@playwright/experimental-ct-core@1.40.1(less@4.1.3):
-    resolution: {integrity: sha512-FjYQP74I2xVAO6W52+Yn2t48FDs+IhOHcWAwZHqAX+lHVHidz4f/b0FY3Qnq8+ZIt5TgqucEzGXbw/TdqJYDtA==}
+  /@playwright/experimental-ct-core@1.41.0(less@4.1.3):
+    resolution: {integrity: sha512-nshYXeACzQRmxHH2IfEP9tdl30tnsUXq5I5WMJtwaza2d4GOntqOUTeMHUq/HziG3XKZO4zc7Kn5tOo1L+BsLw==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      playwright: 1.40.1
-      playwright-core: 1.40.1
-      vite: 4.4.11(less@4.1.3)
+      playwright: 1.41.0
+      playwright-core: 1.41.0
+      vite: 4.5.1(less@4.1.3)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -3740,12 +3740,12 @@ packages:
       - terser
     dev: false
 
-  /@playwright/test@1.40.1:
-    resolution: {integrity: sha512-EaaawMTOeEItCRvfmkI9v6rBkF1svM8wjl/YPRrg2N2Wmp+4qJYkWtJsbew1szfKKDm6fPLy4YAanBhIlf9dWw==}
+  /@playwright/test@1.41.0:
+    resolution: {integrity: sha512-Grvzj841THwtpBOrfiHOeYTJQxDRnKofMSzCiV8XeyLWu3o89qftQ4BCKfkziJhSUQRd0utKhrddtIsiraIwmw==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      playwright: 1.40.1
+      playwright: 1.41.0
     dev: true
 
   /@schematics/angular@15.1.0:
@@ -6839,17 +6839,17 @@ packages:
     dependencies:
       find-up: 4.1.0
 
-  /playwright-core@1.40.1:
-    resolution: {integrity: sha512-+hkOycxPiV534c4HhpfX6yrlawqVUzITRKwHAmYfmsVreltEl6fAZJ3DPfLMOODw0H3s1Itd6MDCWmP1fl/QvQ==}
+  /playwright-core@1.41.0:
+    resolution: {integrity: sha512-UGKASUhXmvqm2Lxa1fNr8sFwAtqjpgBRr9jQ7XBI8Rn5uFiEowGUGwrruUQsVPIom4bk7Lt+oLGpXobnXzrBIw==}
     engines: {node: '>=16'}
     hasBin: true
 
-  /playwright@1.40.1:
-    resolution: {integrity: sha512-2eHI7IioIpQ0bS1Ovg/HszsN/XKNwEG1kbzSDDmADpclKc7CyqkHw7Mg2JCz/bbCxg25QUPcjksoMW7JcIFQmw==}
+  /playwright@1.41.0:
+    resolution: {integrity: sha512-XOsfl5ZtAik/T9oek4V0jAypNlaCNzuKOwVhqhgYT3os6kH34PzbRb74F0VWcLYa5WFdnmxl7qyAHBXvPv7lqQ==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      playwright-core: 1.40.1
+      playwright-core: 1.41.0
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -7970,8 +7970,8 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /vite@4.4.11(less@4.1.3):
-    resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
+  /vite@4.4.9(less@4.1.3):
+    resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -8006,8 +8006,8 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /vite@4.4.9(less@4.1.3):
-    resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
+  /vite@4.5.1(less@4.1.3):
+    resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
