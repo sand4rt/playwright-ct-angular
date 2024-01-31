@@ -68,7 +68,7 @@
     "@angular/core": ">=15.1.0 || >=16.0.0"
   },
   "bin": {
-    "playwright": "./cli.js",
+    "playwright": "cli.js",
     "pw-angular": "cli.js"
   }
 }
