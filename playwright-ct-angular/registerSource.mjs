@@ -20,7 +20,7 @@
 import 'zone.js';
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { EventEmitter, reflectComponentType, Component as defineComponent } from '@angular/core';
+import { reflectComponentType, Component as defineComponent } from '@angular/core';
 import { Router } from '@angular/router';
 
 /** @typedef {import('@playwright/experimental-ct-core/types/component').Component} Component */
@@ -30,6 +30,8 @@ import { Router } from '@angular/router';
 
 /** @type {Map<string, import('@angular/core/testing').ComponentFixture>} */
 const __pwFixtureRegistry = new Map();
+/** @type {WeakMap<import('@angular/core/testing').ComponentFixture, Record<string, import('rxjs').Subscription>>} */
+const __pwOutputSubscriptionRegistry = new WeakMap();
 
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -48,12 +50,22 @@ function __pwUpdateProps(fixture, props = {}) {
  * @param {import('@angular/core/testing').ComponentFixture} fixture
  */
 function __pwUpdateEvents(fixture, events = {}) {
-  for (const [name, value] of Object.entries(events)) {
-    fixture.debugElement.children[0].componentInstance[name] = {
-      ...new EventEmitter(),
-      emit: event => value(event)
-    };
+  const outputSubscriptionRecord =
+    __pwOutputSubscriptionRegistry.get(fixture) ?? {};
+  for (const [name, listener] of Object.entries(events)) {
+    /* Unsubscribe previous listener. */
+    outputSubscriptionRecord[name]?.unsubscribe();
+
+    const subscription = fixture.debugElement.children[0].componentInstance[
+      name
+    ].subscribe((event) => listener(event));
+
+    /* Store new subscription. */
+    outputSubscriptionRecord[name] = subscription;
   }
+
+  /* Update output subscription registry. */
+  __pwOutputSubscriptionRegistry.set(fixture, outputSubscriptionRecord);
 }
 
 function __pwUpdateSlots(Component, slots = {}, tagName) {
@@ -161,6 +173,11 @@ window.playwrightUnmount = async rootElement => {
   if (!fixture)
     throw new Error('Component was not mounted');
 
+  /* Unsubscribe from all outputs. */
+  for (const subscription of Object.values(__pwOutputSubscriptionRegistry.get(fixture) ?? {}))
+    subscription?.unsubscribe();
+
+  __pwOutputSubscriptionRegistry.delete(fixture);
   fixture.destroy();
   fixture.nativeElement.replaceChildren();
 };
