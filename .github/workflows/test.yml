@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -26,7 +26,10 @@ jobs:
         run: pnpm build
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: (cd ct-angular && pnpm exec playwright install --with-deps)
+
+      - name: Install Playwright Browsers
+        run: (cd ct-angular15 && pnpm exec playwright install --with-deps)
 
       - name: Run Playwright tests
         run: pnpm test
