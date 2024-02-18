@@ -1,3 +1,4 @@
 packages:
   - 'ct-angular/**'
+  - 'ct-angular15/**'
   - 'playwright-ct-angular/**'
