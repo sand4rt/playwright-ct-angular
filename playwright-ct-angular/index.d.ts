@@ -14,19 +14,14 @@
  * limitations under the License.
  */
 
-import type { Locator } from '@playwright/test';
 import type { JsonObject } from '@playwright/experimental-ct-core/types/component';
+import type { TestType, Locator } from '@playwright/experimental-ct-core';
 import type { Type } from '@angular/core';
-import type { TestType } from '@playwright/experimental-ct-core';
 
-type ComponentSlot = string | string[];
-type ComponentSlots = Record<string, ComponentSlot> & { default?: ComponentSlot };
-
-type ComponentEvents = Record<string, Function>;
+export type ComponentEvents = Record<string, Function>;
 
 export interface MountOptions<HooksConfig extends JsonObject, Component> {
-  props?: Partial<Component>, // TODO: filter props
-  slots?: ComponentSlots;
+  props?: Partial<Component> | Record<string, unknown>, // TODO: filter props and handle signals
   on?: ComponentEvents;
   hooksConfig?: HooksConfig;
 }
@@ -47,4 +42,4 @@ export const test: TestType<{
 }>;
 
 export { defineConfig, PlaywrightTestConfig } from '@playwright/experimental-ct-core';
-export { expect, devices } from '@playwright/test';
+export { expect, devices } from 'playwright/test';

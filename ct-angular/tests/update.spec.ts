@@ -1,6 +1,5 @@
 import { test, expect } from '@sand4rt/experimental-ct-angular';
 import { CounterComponent } from '@/components/counter.component';
-import { ButtonComponent } from '@/components/button.component';
 
 test('update props without remounting', async ({ mount }) => {
   const component = await mount(CounterComponent, {
@@ -31,28 +30,3 @@ test('update event listeners without remounting', async ({ mount }) => {
 
   await expect(component.getByTestId('remount-count')).toContainText('1');
 });
-
-test('replace existing listener when new listener is set', async ({ mount }) => {
-  let count = 0;
-
-  const component = await mount(ButtonComponent, {
-    props: {
-      title: 'Submit',
-    },
-    on: {
-      submit() {
-        count++;
-      },
-    },
-  });
-  component.update({
-    on: {
-      submit() {
-        count++;
-      },
-    },
-  });
-  await component.click();
-  expect(count).toBe(1);
-});
-

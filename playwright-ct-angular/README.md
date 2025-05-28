@@ -54,7 +54,7 @@ export class ButtonComponent {
 }
 ```
 
-```jsx
+```ts
 // button.component.test.ts
 import { test, expect } from '@sand4rt/experimental-ct-angular';
 import { ButtonComponent } from './components/button.component';
