@@ -1,11 +1,9 @@
 # 🎭 Playwright Angular component testing
 
 > **Note**
-> ~~The API has been designed to closely resemble Playwright's API wherever applicable. This library is _(without guarantee)_ aimed at facilitating a smooth transition to Playwright once it offers official support for Angular components. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.~~
+> The API has been designed to closely resemble Playwright's API wherever applicable. This library is _(without guarantee)_ aimed at facilitating a smooth transition to Playwright once it offers official support for Angular components. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.
 >
-> ~~To push for official support, feedback in the form of GitHub issues and or stars is appreciated!~~
->
-> This library has reached end of life as it is about to be merged into the Playwright repo: https://github.com/microsoft/playwright/pull/27783. To switch to the in-house Playwright version, just replace the `@sand4rt/experimental-ct-angular` imports with `@playwright/experimental-ct-angular`. Thank you all for the support!
+> To push for official support, feedback in the form of GitHub issues and or stars is appreciated!
 
 ## Capabilities
 
