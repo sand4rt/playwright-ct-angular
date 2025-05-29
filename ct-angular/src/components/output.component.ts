@@ -8,7 +8,7 @@ import { Subject, finalize } from "rxjs";
 })
 export class OutputComponent {
   @Output() answerChange = new Subject().pipe(
-    /* Detect when observable is unsubscribed from,
+    /* Detect when observable is unsubscribed from, 
      * and set a global variable `hasUnsubscribed` to true. */
     finalize(() => ((this._window as any).hasUnsubscribed = true))
   );

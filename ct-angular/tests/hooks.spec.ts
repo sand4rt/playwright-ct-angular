@@ -1,8 +1,8 @@
-import { test, expect } from '@sand4rt/experimental-ct-angular';
+import { expect, test } from '@sand4rt/experimental-ct-angular';
 import type { HooksConfig } from 'playwright';
 import { InjectComponent } from '@/components/inject.component';
 
-test('inject a token', async ({ page, mount }) => {
+test('inject a token', async ({ mount }) => {
   const component = await mount<HooksConfig>(InjectComponent, {
     hooksConfig: { injectToken: true },
   });

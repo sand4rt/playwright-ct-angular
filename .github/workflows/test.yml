@@ -1,9 +1,9 @@
 name: Test
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 jobs:
   test:
     timeout-minutes: 60
@@ -11,13 +11,13 @@ jobs:
     steps:
       - uses: pnpm/action-setup@v2
         with:
-          version: '8.x'
+          version: "9.x"
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: "18.x"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -26,12 +26,12 @@ jobs:
         run: pnpm build
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: pnpm dlx playwright install --with-deps
 
       - name: Run Playwright tests
         run: pnpm test
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
