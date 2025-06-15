@@ -1,0 +1,15 @@
+{
+  "name": "semantic-release-version",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": "./index.js",
+  "scripts": {
+  },
+  "dependencies": {
+    "semver": "7.7.2"
+  },
+  "peerDependencies": {
+    "semantic-release": "^24.2.5"
+  }
+}
