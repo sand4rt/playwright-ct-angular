@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "groupName": "Playwright",
+      "packagePatterns": ["^@playwright/experimental-ct-core$"],
+      "automerge": true
+    },
+    {
+      "groupName": "Test and release automation dependencies",
+      "semanticCommitType": "chore",
+      "matchFileNames": [
+        "ct-angular/package.json",
+        "semantic-release-version-mirror/package.json"
+      ],
+      "automerge": false
+    }
+  ]
+}
