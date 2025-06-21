@@ -1,3 +1,4 @@
 packages:
-  - 'ct-angular/**'
-  - 'playwright-ct-angular/**'
+  - "ct-angular/**"
+  - "playwright-ct-angular/**"
+  - "semantic-release-version-mirror/**"
