@@ -7,11 +7,17 @@
     "type": "git",
     "url": "git+https://github.com/sand4rt/playwright-ct-angular.git"
   },
+  "publishConfig": {
+    "tag": "public"
+  },
   "bugs": {
     "url": "https://github.com/sand4rt/playwright-ct-angular/issues"
   },
   "engines": {
     "node": ">=18"
+  },
+  "author": {
+    "name": "sand4rt"
   },
   "license": "MIT",
   "keywords": [
