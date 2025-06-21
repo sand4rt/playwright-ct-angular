@@ -11,7 +11,7 @@
     "url": "https://github.com/sand4rt/playwright-ct-angular/issues"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18.20.8"
   },
   "license": "MIT",
   "keywords": [
