@@ -52,7 +52,7 @@
     "@angular/compiler": "^17.0.0",
     "@angular/core": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
-    "rxjs": "~7.8.1",
+    "rxjs": "~7.8.2",
     "typescript": "~5.2.0",
     "@semantic-release/commit-analyzer": "13.0.1",
     "@semantic-release/exec": "7.1.0",
