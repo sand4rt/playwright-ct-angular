@@ -1,10 +1,5 @@
 # 🎭 Playwright Angular component testing
 
-> **Note**
-> The API has been designed to closely resemble Playwright's API wherever applicable. This library is _(without guarantee)_ aimed at facilitating a smooth transition to Playwright once it offers official support for Angular components. It is important to take into account that this library will reach end of life when Playwright has official support for Angular component testing.
->
-> To push for official support, feedback in the form of GitHub issues and or stars is appreciated!
-
 ## Capabilities
 
 - Run tests fast, in parallel and optionally over multiple machines with [sharding](https://playwright.dev/docs/test-sharding) or [Azure's Testing Service](https://www.youtube.com/watch?v=FvyYC2pxL_8).
