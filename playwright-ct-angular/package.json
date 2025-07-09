@@ -49,9 +49,9 @@
     "@playwright/experimental-ct-core": "1.53.1"
   },
   "devDependencies": {
-    "@angular/compiler": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/compiler": "^20.1.0",
+    "@angular/core": "^20.1.0",
+    "@angular/platform-browser-dynamic": "^20.1.0",
     "rxjs": "~7.8.1",
     "typescript": "~5.2.0",
     "@semantic-release/commit-analyzer": "13.0.1",
@@ -63,9 +63,9 @@
     "semantic-release": "24.2.5"
   },
   "peerDependencies": {
-    "@angular/compiler": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/compiler": "^20.1.0",
+    "@angular/core": "^20.1.0",
+    "@angular/platform-browser-dynamic": "^20.1.0",
     "typescript": ">=5.2.0"
   }
 }
