@@ -74,10 +74,10 @@ importers:
         version: 20.1.0
       '@angular/core':
         specifier: ^20.1.0
-        version: 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)
+        version: 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)
       '@angular/platform-browser-dynamic':
         specifier: ^20.1.0
-        version: 20.1.0(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1))(@angular/compiler@20.1.0)(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)))
+        version: 20.1.0(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@20.1.0)(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)))
       '@semantic-release/commit-analyzer':
         specifier: 13.0.1
         version: 13.0.1(semantic-release@24.2.5(typescript@5.2.2))
@@ -97,8 +97,8 @@ importers:
         specifier: 3.3.0
         version: 3.3.0(@types/node@22.15.24)(typescript@5.2.2)
       rxjs:
-        specifier: ~7.8.1
-        version: 7.8.1
+        specifier: ~7.8.2
+        version: 7.8.2
       semantic-release:
         specifier: 24.2.5
         version: 24.2.5(typescript@5.2.2)
@@ -4267,6 +4267,9 @@ packages:
   rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
 
+  rxjs@7.8.2:
+    resolution: {integrity: sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==}
+
   safe-buffer@5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
 
@@ -5213,9 +5216,9 @@ snapshots:
       '@angular/core': 17.3.8(rxjs@7.8.1)(zone.js@0.14.5)
       tslib: 2.6.2
 
-  '@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))':
+  '@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))':
     dependencies:
-      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)
+      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)
       tslib: 2.6.2
     optional: true
 
@@ -5250,10 +5253,10 @@ snapshots:
       rxjs: 7.8.1
       tslib: 2.6.2
 
-  '@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1)':
+  '@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
-      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)
-      rxjs: 7.8.1
+      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)
+      rxjs: 7.8.2
       tslib: 2.6.2
 
   '@angular/compiler-cli@17.3.8(@angular/compiler@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5)))(typescript@5.4.3)':
@@ -5287,9 +5290,9 @@ snapshots:
       tslib: 2.6.2
       zone.js: 0.14.5
 
-  '@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)':
+  '@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)':
     dependencies:
-      rxjs: 7.8.1
+      rxjs: 7.8.2
       tslib: 2.6.2
     optionalDependencies:
       '@angular/compiler': 20.1.0
@@ -5310,12 +5313,12 @@ snapshots:
       '@angular/platform-browser': 17.3.8(@angular/animations@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))
       tslib: 2.6.2
 
-  '@angular/platform-browser-dynamic@20.1.0(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1))(@angular/compiler@20.1.0)(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)))':
+  '@angular/platform-browser-dynamic@20.1.0(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@20.1.0)(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)))':
     dependencies:
-      '@angular/common': 17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1)
+      '@angular/common': 17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/compiler': 20.1.0
-      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)
-      '@angular/platform-browser': 17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))
+      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)
+      '@angular/platform-browser': 17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))
       tslib: 2.6.2
 
   '@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))':
@@ -5326,13 +5329,13 @@ snapshots:
     optionalDependencies:
       '@angular/animations': 17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))
 
-  '@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))':
+  '@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)))(@angular/common@17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))':
     dependencies:
-      '@angular/common': 17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))(rxjs@7.8.1)
-      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1)
+      '@angular/common': 17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core': 20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2)
       tslib: 2.6.2
     optionalDependencies:
-      '@angular/animations': 17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.1))
+      '@angular/animations': 17.3.8(@angular/core@20.1.0(@angular/compiler@20.1.0)(rxjs@7.8.2))
 
   '@angular/router@17.3.8(@angular/common@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.8(@angular/animations@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1)':
     dependencies:
@@ -8473,7 +8476,7 @@ snapshots:
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
-      rxjs: 7.8.1
+      rxjs: 7.8.2
       string-width: 4.2.3
       strip-ansi: 6.0.1
       through: 2.3.8
@@ -8492,7 +8495,7 @@ snapshots:
       mute-stream: 1.0.0
       ora: 5.4.1
       run-async: 3.0.0
-      rxjs: 7.8.1
+      rxjs: 7.8.2
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 6.2.0
@@ -9572,6 +9575,10 @@ snapshots:
       queue-microtask: 1.2.3
 
   rxjs@7.8.1:
+    dependencies:
+      tslib: 2.6.2
+
+  rxjs@7.8.2:
     dependencies:
       tslib: 2.6.2
 
