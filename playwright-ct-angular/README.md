@@ -1,6 +1,5 @@
 # 🎭 Playwright Angular component testing
 
-> **Note**
 > The API has been designed to closely resemble Playwright's API wherever applicable. This library is _(without guarantee)_ aimed at facilitating a smooth transition once Playwright offers official support for Angular component testing.
 
 ## Capabilities

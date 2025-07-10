@@ -1,17 +1,23 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "1.53.0",
+  "version": "1.53.1",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sand4rt/playwright-ct-angular.git"
   },
+  "publishConfig": {
+    "tag": "public"
+  },
   "bugs": {
     "url": "https://github.com/sand4rt/playwright-ct-angular/issues"
   },
   "engines": {
     "node": ">=18"
+  },
+  "author": {
+    "name": "sand4rt"
   },
   "license": "MIT",
   "keywords": [
