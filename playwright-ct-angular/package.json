@@ -1,6 +1,6 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "1.53.1",
+  "version": "1.54.0",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
