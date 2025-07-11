@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18.20.8"
+          node-version: "22.17.0"
           cache: "pnpm"
 
       - name: Install dependencies
@@ -62,7 +62,7 @@ jobs:
     steps:
       - name: Generate bot app token
         id: generate_token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ secrets.RELEASER_ID }}
           private-key: ${{ secrets.RELEASER_PRIVATE_KEY }}
