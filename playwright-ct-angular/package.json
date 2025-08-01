@@ -1,6 +1,6 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "1.54.1",
+  "version": "1.54.2",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
@@ -52,7 +52,7 @@
     "playwright": "cli.js"
   },
   "dependencies": {
-    "@playwright/experimental-ct-core": "1.54.1"
+    "@playwright/experimental-ct-core": "1.54.2"
   },
   "devDependencies": {
     "@angular/compiler": "^20.1.4",
