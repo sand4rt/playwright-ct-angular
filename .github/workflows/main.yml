@@ -15,7 +15,7 @@ jobs:
       - name: PNPM Setup
         uses: pnpm/action-setup@v2
         with:
-          version: "10.x"
+          version: "10.14.0"
 
       - uses: actions/checkout@v5
 
@@ -69,7 +69,7 @@ jobs:
       - name: PNPM Setup
         uses: pnpm/action-setup@v2
         with:
-          version: "10.x"
+          version: "10.14.0"
       - name: Checkout
         uses: actions/checkout@v5
         with:
