@@ -11,7 +11,7 @@
   "homepage": "https://github.com/sand4rt/playwright-ct-angular#readme",
   "engines": {
     "node": ">=22.18.0",
-    "pnpm": ">=10.13.1"
+    "pnpm": ">=10.15.0"
   },
   "scripts": {
     "test": "pnpm --stream -r test",
