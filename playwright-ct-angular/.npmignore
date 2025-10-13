@@ -1,7 +1,9 @@
 **/*
+.releaserc.json
 
 !README.md
 !LICENSE
+!cli.js
 !register.d.ts
 !register.mjs
 !registerSource.mjs
@@ -9,3 +11,4 @@
 !index.js
 !hooks.d.ts
 !hooks.mjs
+!transform.js
