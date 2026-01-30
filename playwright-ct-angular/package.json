@@ -57,7 +57,7 @@
   "devDependencies": {
     "@angular/compiler": "^20.3.11",
     "@angular/core": "^20.3.11",
-    "@angular/platform-browser-dynamic": "^20.3.11",
+    "@angular/platform-browser-dynamic": "^20.3.16",
     "rxjs": "~7.8.2",
     "typescript": "~5.9.3",
     "@semantic-release/commit-analyzer": "13.0.1",
@@ -71,7 +71,7 @@
   "peerDependencies": {
     "@angular/compiler": "^20.3.11",
     "@angular/core": "^20.3.11",
-    "@angular/platform-browser-dynamic": "^20.3.11",
+    "@angular/platform-browser-dynamic": "^20.3.16",
     "typescript": ">=5.9.3"
   }
 }
