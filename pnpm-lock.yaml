@@ -66,8 +66,8 @@ importers:
   playwright-ct-angular:
     dependencies:
       '@playwright/experimental-ct-core':
-        specifier: 1.58.0
-        version: 1.58.0(@types/node@22.15.24)(jiti@2.4.2)(less@4.2.0)(sass@1.71.1)(terser@5.40.0)
+        specifier: 1.58.1
+        version: 1.58.1(@types/node@22.15.24)(jiti@2.4.2)(less@4.2.0)(sass@1.71.1)(terser@5.40.0)
     devDependencies:
       '@angular/compiler':
         specifier: ^20.3.11
@@ -1504,8 +1504,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/experimental-ct-core@1.58.0':
-    resolution: {integrity: sha512-YZsjApZmRE78Kp2E6OtAvFFVheUyZDfrlZMf+lfnSshmYHrrJUy3bhdCe7EPCWsE12XfCVVAv6G0btiyAx8d0w==}
+  '@playwright/experimental-ct-core@1.58.1':
+    resolution: {integrity: sha512-UfU9Xvu+B7RxDcNelzkTnbAKSeY22IHCWjxWwwdN1OENV6JmF/Ayb7G01WNMZhtVszpWvjLYdz9OEi7lv02o6A==}
     engines: {node: '>=18'}
 
   '@pnpm/config.env-replace@1.1.0':
@@ -4141,13 +4141,13 @@ packages:
     resolution: {integrity: sha512-Ie9z/WINcxxLp27BKOCHGde4ITq9UklYKDzVo1nhk5sqGEXU3FpkwP5GM2voTGJkGd9B3Otl+Q4uwSOeSUtOBA==}
     engines: {node: '>=14.16'}
 
-  playwright-core@1.58.0:
-    resolution: {integrity: sha512-aaoB1RWrdNi3//rOeKuMiS65UCcgOVljU46At6eFcOFPFHWtd2weHRRow6z/n+Lec0Lvu0k9ZPKJSjPugikirw==}
+  playwright-core@1.58.1:
+    resolution: {integrity: sha512-bcWzOaTxcW+VOOGBCQgnaKToLJ65d6AqfLVKEWvexyS3AS6rbXl+xdpYRMGSRBClPvyj44njOWoxjNdL/H9UNg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.58.0:
-    resolution: {integrity: sha512-2SVA0sbPktiIY/MCOPX8e86ehA/e+tDNq+e5Y8qjKYti2Z/JG7xnronT/TXTIkKbYGWlCbuucZ6dziEgkoEjQQ==}
+  playwright@1.58.1:
+    resolution: {integrity: sha512-+2uTZHxSCcxjvGc5C891LrS1/NlxglGxzrC4seZiVjcYVQfUa87wBL6rTDqzGjuoWNjnBzRqKmF6zRYGMvQUaQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -6785,10 +6785,10 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/experimental-ct-core@1.58.0(@types/node@22.15.24)(jiti@2.4.2)(less@4.2.0)(sass@1.71.1)(terser@5.40.0)':
+  '@playwright/experimental-ct-core@1.58.1(@types/node@22.15.24)(jiti@2.4.2)(less@4.2.0)(sass@1.71.1)(terser@5.40.0)':
     dependencies:
-      playwright: 1.58.0
-      playwright-core: 1.58.0
+      playwright: 1.58.1
+      playwright-core: 1.58.1
       vite: 6.4.1(@types/node@22.15.24)(jiti@2.4.2)(less@4.2.0)(sass@1.71.1)(terser@5.40.0)
     transitivePeerDependencies:
       - '@types/node'
@@ -9533,11 +9533,11 @@ snapshots:
     dependencies:
       find-up: 6.3.0
 
-  playwright-core@1.58.0: {}
+  playwright-core@1.58.1: {}
 
-  playwright@1.58.0:
+  playwright@1.58.1:
     dependencies:
-      playwright-core: 1.58.0
+      playwright-core: 1.58.1
     optionalDependencies:
       fsevents: 2.3.2
 
