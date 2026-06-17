@@ -8,9 +8,19 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Test (Angular ${{ matrix.angular-major }})
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - angular-major: "20"
+            angular-version: "^20.3.11"
+          - angular-major: "21"
+            angular-version: "^21.0.0"
+          - angular-major: "22"
+            angular-version: "^22.0.0"
     steps:
       - name: PNPM Setup
         uses: pnpm/action-setup@v2
@@ -25,8 +35,13 @@ jobs:
           node-version: "22.21.1"
           cache: "pnpm"
 
+      - name: Set Angular test version
+        run: node .github/scripts/set-angular-version.js
+        env:
+          ANGULAR_VERSION: ${{ matrix.angular-version }}
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Get Playwright version
         id: versions
@@ -45,7 +60,7 @@ jobs:
       - uses: actions/upload-artifact@v6
         if: always()
         with:
-          name: playwright-report
+          name: playwright-report-angular-${{ matrix.angular-version }}
           path: ./*/**/playwright-report/
           retention-days: 30
 
