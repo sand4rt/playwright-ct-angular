@@ -36,7 +36,7 @@ jobs:
           cache: "pnpm"
 
       - name: Set Angular test version
-        run: node scripts/set-angular-version.js
+        run: node .github/scripts/set-angular-version.js
         env:
           ANGULAR_VERSION: ${{ matrix.angular-version }}
 
