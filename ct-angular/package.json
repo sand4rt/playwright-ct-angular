@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "node --test ../playwright-ct-angular/create-playwright-sand4rt/test/lib.test.js && npx playwright test",
+    "test": "pnpm --filter create-playwright-sand4rt run test:pre-ct && npx playwright test",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -5,6 +5,9 @@
   "bin": {
     "create-playwright": "index.js"
   },
+  "scripts": {
+    "test:pre-ct": "node --test test/lib.test.js"
+  },
   "config": {
     "ctPackageVersion": "1.58.2"
   },
