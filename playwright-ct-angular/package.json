@@ -66,12 +66,12 @@
     "cz-conventional-changelog": "3.3.0",
     "rxjs": "~7.8.2",
     "semantic-release": "25.0.3",
-    "typescript": "~5.9.3"
+    "typescript": "~6.0.3"
   },
   "peerDependencies": {
     "@angular/compiler": "^20.3.11",
     "@angular/core": "^20.3.11",
     "@angular/platform-browser-dynamic": "^20.3.11",
-    "typescript": ">=5.9.3"
+    "typescript": ">=6.0.3"
   }
 }
