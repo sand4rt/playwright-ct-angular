@@ -7,7 +7,7 @@ exports.default = void 0;
 exports.importInfo = importInfo;
 var _path = _interopRequireDefault(require("path"));
 var _babelBundle = require("playwright/lib/transform/babelBundle");
-var _transform = require("playwright/lib/transform/transform");
+var _transform = require("playwright/lib/common").transform;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /**
  * Copyright (c) Microsoft Corporation.
