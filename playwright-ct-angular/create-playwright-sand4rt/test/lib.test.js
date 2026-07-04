@@ -5,10 +5,14 @@ const os = require('os');
 const path = require('path');
 
 const {
+  CT_PACKAGE_NAME,
+  CT_PACKAGE_VERSION,
+  CT_PACKAGE_SPEC,
   hasCtFlag,
   targetDirFromArgs,
   detectPackageManager,
   patchPackageJson,
+  installArgsForPackageManager,
 } = require('../lib');
 
 test('hasCtFlag detects ct mode', () => {
@@ -53,7 +57,13 @@ test('patchPackageJson replaces undefined dependency with ct angular package', (
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
   assert.equal(packageJson.devDependencies.undefined, undefined);
   assert.equal(packageJson.devDependencies['@types/node'], '^20.0.0');
-  assert.equal(packageJson.devDependencies['@sand4rt/experimental-ct-angular'], 'latest');
+  assert.equal(packageJson.devDependencies[CT_PACKAGE_NAME], CT_PACKAGE_VERSION);
 
   fs.rmSync(tempDir, { recursive: true, force: true });
+});
+
+test('installArgsForPackageManager enforces exact dependency installs', () => {
+  assert.deepEqual(installArgsForPackageManager('npm'), ['install', '--save-dev', '--save-exact', CT_PACKAGE_SPEC]);
+  assert.deepEqual(installArgsForPackageManager('pnpm'), ['add', '--save-dev', '--save-exact', CT_PACKAGE_SPEC]);
+  assert.deepEqual(installArgsForPackageManager('yarn'), ['add', '--dev', '--exact', CT_PACKAGE_SPEC]);
 });

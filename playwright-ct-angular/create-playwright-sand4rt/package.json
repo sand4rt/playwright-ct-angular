@@ -8,5 +8,8 @@
   "scripts": {
     "test": "node --test"
   },
+  "config": {
+    "ctPackageVersion": "1.58.2"
+  },
   "license": "MIT"
 }

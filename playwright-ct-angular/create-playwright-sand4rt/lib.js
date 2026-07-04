@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const packageJson = require('./package.json');
 
 const CT_PACKAGE_NAME = '@sand4rt/experimental-ct-angular';
+const CT_PACKAGE_VERSION = packageJson.config.ctPackageVersion;
+const CT_PACKAGE_SPEC = `${CT_PACKAGE_NAME}@${CT_PACKAGE_VERSION}`;
 
 function hasCtFlag(args) {
   return args.includes('--ct');
@@ -46,16 +49,27 @@ function patchPackageJson(projectDir) {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
   packageJson.devDependencies ??= {};
   delete packageJson.devDependencies.undefined;
-  packageJson.devDependencies[CT_PACKAGE_NAME] = 'latest';
+  packageJson.devDependencies[CT_PACKAGE_NAME] = CT_PACKAGE_VERSION;
 
   fs.writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`);
   return true;
 }
 
+function installArgsForPackageManager(packageManager) {
+  if (packageManager === 'pnpm')
+    return ['add', '--save-dev', '--save-exact', CT_PACKAGE_SPEC];
+  if (packageManager === 'yarn')
+    return ['add', '--dev', '--exact', CT_PACKAGE_SPEC];
+  return ['install', '--save-dev', '--save-exact', CT_PACKAGE_SPEC];
+}
+
 module.exports = {
   CT_PACKAGE_NAME,
+  CT_PACKAGE_VERSION,
+  CT_PACKAGE_SPEC,
   hasCtFlag,
   targetDirFromArgs,
   detectPackageManager,
   patchPackageJson,
+  installArgsForPackageManager,
 };

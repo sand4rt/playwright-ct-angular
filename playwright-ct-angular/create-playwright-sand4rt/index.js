@@ -3,11 +3,11 @@
 const path = require('path');
 const { spawnSync } = require('child_process');
 const {
-  CT_PACKAGE_NAME,
   hasCtFlag,
   targetDirFromArgs,
   detectPackageManager,
   patchPackageJson,
+  installArgsForPackageManager,
 } = require('./lib');
 
 const args = process.argv.slice(2);
@@ -19,7 +19,7 @@ const createPlaywrightResult = spawnSync(
 );
 
 if (createPlaywrightResult.status !== 0)
-  process.exit(createPlaywrightResult.status || 1);
+  process.exit(createPlaywrightResult.status ?? 1);
 
 if (!hasCtFlag(args))
   process.exit(0);
@@ -29,11 +29,7 @@ if (!patchPackageJson(targetDir))
   process.exit(0);
 
 const packageManager = detectPackageManager(targetDir);
-const installArgs = packageManager === 'pnpm'
-  ? ['add', '--save-dev', CT_PACKAGE_NAME]
-  : packageManager === 'yarn'
-    ? ['add', '--dev', CT_PACKAGE_NAME]
-    : ['install', '--save-dev', CT_PACKAGE_NAME];
+const installArgs = installArgsForPackageManager(packageManager);
 
 const installResult = spawnSync(packageManager, installArgs, {
   cwd: targetDir,
@@ -41,4 +37,4 @@ const installResult = spawnSync(packageManager, installArgs, {
 });
 
 if (installResult.status !== 0)
-  process.exit(installResult.status || 1);
+  process.exit(installResult.status ?? 1);
