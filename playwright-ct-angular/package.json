@@ -1,6 +1,6 @@
 {
   "name": "@sand4rt/experimental-ct-angular",
-  "version": "1.58.1",
+  "version": "1.61.0",
   "description": "Playwright Component Testing for Angular",
   "homepage": "https://playwright.dev",
   "repository": {
@@ -52,26 +52,26 @@
     "playwright": "cli.js"
   },
   "dependencies": {
-    "@playwright/experimental-ct-core": "1.58.1"
+    "@playwright/experimental-ct-core": "1.61.0"
   },
   "devDependencies": {
     "@angular/compiler": "^20.3.11",
     "@angular/core": "^20.3.11",
     "@angular/platform-browser-dynamic": "^20.3.11",
-    "rxjs": "~7.8.2",
-    "typescript": "~5.9.3",
     "@semantic-release/commit-analyzer": "13.0.1",
     "@semantic-release/exec": "7.1.0",
-    "@semantic-release/github": "12.0.6",
     "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "12.0.6",
     "@semantic-release/release-notes-generator": "14.1.0",
     "cz-conventional-changelog": "3.3.0",
-    "semantic-release": "25.0.3"
+    "rxjs": "~7.8.2",
+    "semantic-release": "25.0.3",
+    "typescript": "~6.0.3"
   },
   "peerDependencies": {
     "@angular/compiler": "^20.3.11",
     "@angular/core": "^20.3.11",
     "@angular/platform-browser-dynamic": "^20.3.11",
-    "typescript": ">=5.9.3"
+    "typescript": ">=6.0.3"
   }
 }
