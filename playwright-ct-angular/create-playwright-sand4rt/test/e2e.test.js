@@ -13,6 +13,8 @@ test('wrapper creates ct project with angular ct dependency installed', () => {
   const wrapperPath = path.resolve(__dirname, '..', 'index.js');
   const ctAngularDir = path.resolve(__dirname, '..', '..', '..', 'ct-angular');
   const ctAngularPackageLink = path.join(ctAngularDir, 'node_modules', '@sand4rt', 'experimental-ct-angular');
+  const npmVersionResult = spawnSync('npm', ['--version'], { encoding: 'utf8' });
+  const npmVersion = npmVersionResult.status === 0 ? npmVersionResult.stdout.trim() : '10';
 
   let originalCtAngularLinkTarget = null;
   try {
@@ -30,7 +32,7 @@ test('wrapper creates ct project with angular ct dependency installed', () => {
       encoding: 'utf8',
       env: {
         ...process.env,
-        npm_config_user_agent: `npm/10 node/v${process.versions.node} ${process.platform} ${process.arch}`,
+        npm_config_user_agent: `npm/${npmVersion} node/v${process.versions.node} ${process.platform} ${process.arch}`,
       },
     });
 
