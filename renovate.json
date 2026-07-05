@@ -3,6 +3,7 @@
   "extends": [
     "config:base"
   ],
+  "rebaseWhen": "behind-base-branch",
   "rangeStrategy": "bump",
   "packageRules": [
     {
@@ -18,6 +19,13 @@
         "semantic-release-version-mirror/package.json"
       ],
       "automerge": true
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "automerge": true,
+      "automergeType": "pr"
     }
   ]
 }
