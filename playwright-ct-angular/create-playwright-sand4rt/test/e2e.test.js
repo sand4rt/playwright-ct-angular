@@ -6,6 +6,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 const { CT_PACKAGE_NAME, CT_PACKAGE_VERSION } = require('../lib');
+const DEFAULT_NPM_VERSION = '10';
 
 test('wrapper creates ct project with angular ct dependency installed', () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'create-playwright-sand4rt-e2e-'));
@@ -14,7 +15,7 @@ test('wrapper creates ct project with angular ct dependency installed', () => {
   const ctAngularDir = path.resolve(__dirname, '..', '..', '..', 'ct-angular');
   const ctAngularPackageLink = path.join(ctAngularDir, 'node_modules', '@sand4rt', 'experimental-ct-angular');
   const npmVersionResult = spawnSync('npm', ['--version'], { encoding: 'utf8' });
-  const npmVersion = npmVersionResult.status === 0 ? npmVersionResult.stdout.trim() : '10';
+  const npmVersion = npmVersionResult.status === 0 ? npmVersionResult.stdout.trim() : DEFAULT_NPM_VERSION;
 
   let originalCtAngularLinkTarget = null;
   try {
