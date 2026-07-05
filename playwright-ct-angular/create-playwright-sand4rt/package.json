@@ -6,7 +6,7 @@
     "create-playwright": "index.js"
   },
   "scripts": {
-    "test:pre-ct": "node --test test/*.test.js"
+    "test:pre-ct": "node --test test/e2e.test.js"
   },
   "config": {
     "ctPackageVersion": "1.58.2"
