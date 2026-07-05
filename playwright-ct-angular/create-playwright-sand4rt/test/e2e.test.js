@@ -30,7 +30,7 @@ test('wrapper creates ct project with angular ct dependency installed', () => {
       encoding: 'utf8',
       env: {
         ...process.env,
-        npm_config_user_agent: 'npm/10 node/v22 linux x64',
+        npm_config_user_agent: `npm/10 node/v${process.versions.node} ${process.platform} ${process.arch}`,
       },
     });
 
@@ -47,6 +47,9 @@ test('wrapper creates ct project with angular ct dependency installed', () => {
     const installedPackagePath = path.join(projectDir, 'node_modules', '@sand4rt', 'experimental-ct-angular');
     assert.equal(fs.existsSync(installedPackagePath), true);
 
+    assert.equal(fs.existsSync(ctAngularPackageLink), true);
+    const ctAngularLinkStats = fs.lstatSync(ctAngularPackageLink);
+    assert.equal(ctAngularLinkStats.isSymbolicLink(), true);
     originalCtAngularLinkTarget = fs.readlinkSync(ctAngularPackageLink);
     fs.rmSync(ctAngularPackageLink, { force: true });
     fs.symlinkSync(installedPackagePath, ctAngularPackageLink, 'dir');
