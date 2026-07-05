@@ -14,7 +14,7 @@
     "url": "https://github.com/sand4rt/playwright-ct-angular/issues"
   },
   "engines": {
-    "node": ">=22.21.1"
+    "node": ">=22.22.0"
   },
   "author": {
     "name": "sand4rt"
