@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: PNPM Setup
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v6
         with:
           version: "10.18.3"
 
@@ -67,7 +67,7 @@ jobs:
           app-id: ${{ secrets.RELEASER_ID }}
           private-key: ${{ secrets.RELEASER_PRIVATE_KEY }}
       - name: PNPM Setup
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v6
         with:
           version: "10.18.3"
       - name: Checkout
