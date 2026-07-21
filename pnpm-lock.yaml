@@ -106,6 +106,8 @@ importers:
         specifier: ~7.0.2
         version: 7.0.2
 
+  playwright-ct-angular/create-playwright-sand4rt: {}
+
   semantic-release-version-mirror:
     dependencies:
       semantic-release:

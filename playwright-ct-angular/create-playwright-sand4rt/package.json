@@ -1,0 +1,15 @@
+{
+  "name": "create-playwright-sand4rt",
+  "version": "0.0.0",
+  "description": "Create Playwright with Angular component testing package preconfigured",
+  "bin": {
+    "create-playwright": "index.js"
+  },
+  "scripts": {
+    "test:pre-ct": "node --test test/e2e.test.js"
+  },
+  "config": {
+    "ctPackageVersion": "1.58.2"
+  },
+  "license": "MIT"
+}
