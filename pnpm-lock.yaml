@@ -85,8 +85,8 @@ importers:
         specifier: 7.1.0
         version: 7.1.0(semantic-release@25.0.7(typescript@7.0.2))
       '@semantic-release/git':
-        specifier: 10.0.1
-        version: 10.0.1(semantic-release@25.0.7(typescript@7.0.2))
+        specifier: 11.0.1
+        version: 11.0.1(semantic-release@25.0.7(typescript@7.0.2))
       '@semantic-release/github':
         specifier: 12.0.9
         version: 12.0.9(semantic-release@25.0.7(typescript@7.0.2))
@@ -1807,10 +1807,6 @@ packages:
     peerDependencies:
       semantic-release: '>=20.1.0'
 
-  '@semantic-release/error@3.0.0':
-    resolution: {integrity: sha512-5hiM4Un+tpl4cKw3lV4UgzJj+SmfNIDCLLw0TepzQxz9ZGV5ixnqkzIVF+3tp0ZHgcMKE+VNGHJjEeyFG2dcSw==}
-    engines: {node: '>=14.17'}
-
   '@semantic-release/error@4.0.0':
     resolution: {integrity: sha512-mgdxrHTLOjOddRVYIYDo0fR3/v61GNN1YGkfbrjuIKg/uMgCd+Qzo3UAXJ+woLQQpos4pl5Esuw5A7AoNlzjUQ==}
     engines: {node: '>=18'}
@@ -1821,11 +1817,11 @@ packages:
     peerDependencies:
       semantic-release: '>=24.1.0'
 
-  '@semantic-release/git@10.0.1':
-    resolution: {integrity: sha512-eWrx5KguUcU2wUPaO6sfvZI0wPafUKAMNC18aXY4EnNcrZL86dEmpNVnC9uMpGZkmZJ9EfCVJBQx4pV4EMGT1w==}
-    engines: {node: '>=14.17'}
+  '@semantic-release/git@11.0.1':
+    resolution: {integrity: sha512-Zr8BUYCTZMc8V6wDKN2dpR7nJgewd9I6THL3ydLTnp3OEdTo1/4RBLNYaeRucYMsjMv+BXoCNfXA0NADj1kwhw==}
+    engines: {node: ^22.22.2 || >=24.15}
     peerDependencies:
-      semantic-release: '>=18.0.0'
+      semantic-release: '>=20.1.0'
 
   '@semantic-release/github@11.0.6':
     resolution: {integrity: sha512-ctDzdSMrT3H+pwKBPdyCPty6Y47X8dSrjd3aPZ5KKIKKWTwZBE9De8GtsH3TyAlw3Uyo2stegMx6rJMXKpJwJA==}
@@ -2921,6 +2917,10 @@ packages:
   events@3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
+
+  execa@10.0.1:
+    resolution: {integrity: sha512-ge98qjkRK4IB7tL7Ju/6qmm5LHoH1eEMt5FNZrz3f4UIYhF28lggX20z3FaX1sgc67msLEn0N0BscOs29iuwyw==}
+    engines: {node: '>=22'}
 
   execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
@@ -4278,10 +4278,6 @@ packages:
     resolution: {integrity: sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==}
     engines: {node: '>=18'}
 
-  p-reduce@2.1.0:
-    resolution: {integrity: sha512-2USApvnsutq8uoxZBGbbWM0JIYLiEMJ9RlaN7fAzVNb9OZN0SHjjTTfIcb667XynS5Y1VhwDJVDa72TnPzAYWw==}
-    engines: {node: '>=8'}
-
   p-reduce@3.0.0:
     resolution: {integrity: sha512-xsrIUgI0Kn6iyDYm9StOpOeK29XM1aboGji26+QEortiFST1hGZaUQOLhtEbqHErPpGW/aSz6allwK2qcptp0Q==}
     engines: {node: '>=12'}
@@ -4498,6 +4494,10 @@ packages:
 
   pretty-ms@9.2.0:
     resolution: {integrity: sha512-4yf0QO/sllf/1zbZWYnvWw3NxCQwLXKzIj0G849LSufP15BXKM0rbD2Z3wVnkMfjdn/CB0Dpp444gYAACdsplg==}
+    engines: {node: '>=18'}
+
+  pretty-ms@9.3.1:
+    resolution: {integrity: sha512-HzMy3Geq23nVALD/M2LliU+F+M+gVNsvkQWWqeBZ8HDiCgzo6YPJ/Omrmtq24EFrIsk0a3EkQGEd7bDOo+IhGA==}
     engines: {node: '>=18'}
 
   proc-log@3.0.0:
@@ -5460,6 +5460,11 @@ packages:
     resolution: {integrity: sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==}
     engines: {node: '>=0.8.0'}
 
+  which-command@0.1.0:
+    resolution: {integrity: sha512-XZyoF5/5hZtXitIwzrU4NKK+Wtbb9aB9CezUEw2Q0wlYK8NUYQxC1rRXgNueYLtBAJwXIb+/tFVk4dozciNJMA==}
+    engines: {node: '>=22'}
+    hasBin: true
+
   which@1.3.1:
     resolution: {integrity: sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==}
     hasBin: true
@@ -5559,6 +5564,10 @@ packages:
 
   yoctocolors@2.1.1:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
+    engines: {node: '>=18'}
+
+  yoctocolors@2.2.0:
+    resolution: {integrity: sha512-xYqdZFUK/VYazNl/oCDYN+3WloWQwMfZxBoiNt6qNyk+xfOdi598muWE42rNZFp1kNOiqW936q5RhUdnpqElSg==}
     engines: {node: '>=18'}
 
   zone.js@0.14.5:
@@ -7287,8 +7296,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/error@3.0.0': {}
-
   '@semantic-release/error@4.0.0': {}
 
   '@semantic-release/exec@7.1.0(semantic-release@25.0.7(typescript@7.0.2))':
@@ -7303,16 +7310,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/git@10.0.1(semantic-release@25.0.7(typescript@7.0.2))':
+  '@semantic-release/git@11.0.1(semantic-release@25.0.7(typescript@7.0.2))':
     dependencies:
-      '@semantic-release/error': 3.0.0
-      aggregate-error: 3.1.0
+      '@semantic-release/error': 4.0.0
+      aggregate-error: 5.0.0
       debug: 4.4.1
       dir-glob: 3.0.1
-      execa: 5.1.1
-      lodash: 4.17.21
+      execa: 10.0.1
+      lodash-es: 4.17.21
       micromatch: 4.0.8
-      p-reduce: 2.1.0
+      p-reduce: 3.0.0
       semantic-release: 25.0.7(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
@@ -8577,6 +8584,21 @@ snapshots:
 
   events@3.3.0: {}
 
+  execa@10.0.1:
+    dependencies:
+      '@sindresorhus/merge-streams': 4.0.0
+      figures: 6.1.0
+      get-stream: 9.0.1
+      human-signals: 8.0.1
+      is-plain-obj: 4.1.0
+      is-stream: 4.0.1
+      npm-run-path: 6.0.0
+      pretty-ms: 9.3.1
+      signal-exit: 4.1.0
+      strip-final-newline: 4.0.0
+      which-command: 0.1.0
+      yoctocolors: 2.2.0
+
   execa@5.1.1:
     dependencies:
       cross-spawn: 7.0.6
@@ -9833,8 +9855,6 @@ snapshots:
 
   p-map@7.0.3: {}
 
-  p-reduce@2.1.0: {}
-
   p-reduce@3.0.0: {}
 
   p-retry@4.6.2:
@@ -10037,6 +10057,10 @@ snapshots:
       source-map-js: 1.2.1
 
   pretty-ms@9.2.0:
+    dependencies:
+      parse-ms: 4.0.0
+
+  pretty-ms@9.3.1:
     dependencies:
       parse-ms: 4.0.0
 
@@ -11129,6 +11153,8 @@ snapshots:
 
   websocket-extensions@0.1.4: {}
 
+  which-command@0.1.0: {}
+
   which@1.3.1:
     dependencies:
       isexe: 2.0.0
@@ -11221,6 +11247,8 @@ snapshots:
   yocto-queue@1.2.1: {}
 
   yoctocolors@2.1.1: {}
+
+  yoctocolors@2.2.0: {}
 
   zone.js@0.14.5:
     dependencies:
