@@ -1,5 +1,5 @@
 import { expect, test } from '@sand4rt/experimental-ct-angular';
-import type { HooksConfig } from 'playwright';
+import type { HooksConfig } from '../playwright';
 import { InjectComponent } from '@/components/inject.component';
 
 test('inject a token', async ({ mount }) => {
