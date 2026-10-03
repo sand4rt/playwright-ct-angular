@@ -17,10 +17,13 @@ jobs:
         include:
           - angular-major: "20"
             angular-version: "^20.3.11"
+            typescript-version: "~5.9.3"
           - angular-major: "21"
             angular-version: "^21.0.0"
+            typescript-version: "~5.9.3"
           - angular-major: "22"
             angular-version: "^22.0.0"
+            typescript-version: "~6.0.2"
     steps:
       - name: PNPM Setup
         uses: pnpm/action-setup@v6
@@ -39,6 +42,7 @@ jobs:
         run: node .github/scripts/set-angular-version.js
         env:
           ANGULAR_VERSION: ${{ matrix.angular-version }}
+          TYPESCRIPT_VERSION: ${{ matrix.typescript-version }}
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -60,7 +64,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: playwright-report-angular-${{ matrix.angular-version }}
+          name: playwright-report-angular-${{ matrix.angular-major }}
           path: ./*/**/playwright-report/
           retention-days: 30
 

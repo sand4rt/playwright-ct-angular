@@ -1,9 +1,10 @@
 const fs = require('fs');
 
 const angularVersion = process.env.ANGULAR_VERSION;
+const typescriptVersion = process.env.TYPESCRIPT_VERSION;
 
-if (!angularVersion) {
-  throw new Error('ANGULAR_VERSION must be set');
+if (!angularVersion || !typescriptVersion) {
+  throw new Error('ANGULAR_VERSION and TYPESCRIPT_VERSION must be set');
 }
 
 const path = 'ct-angular/package.json';
@@ -19,6 +20,7 @@ const angularDeps = [
   '@angular/router',
 ];
 const angularDevDeps = [
+  '@angular/build',
   '@angular-devkit/build-angular',
   '@angular/cli',
   '@angular/compiler-cli',
@@ -29,5 +31,7 @@ for (const name of angularDeps)
 
 for (const name of angularDevDeps)
   pkg.devDependencies[name] = angularVersion;
+
+pkg.devDependencies.typescript = typescriptVersion;
 
 fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
