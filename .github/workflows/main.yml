@@ -70,6 +70,7 @@ jobs:
 
   release:
     name: Release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
